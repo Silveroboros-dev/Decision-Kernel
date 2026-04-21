@@ -10,7 +10,7 @@ Governance OS proved the kernel in high-stakes finance: signal extraction, deter
 
 - Current state: docs-first pivot package built from Governance OS primitives, with a concrete walkthrough and linked proof artifacts from the predecessor repo
 - Best-fit problems: 04 Verification without managers, 07 Cost governance for agents, with 05 Coordination without companies as the extension
-- Biggest blocker: access to live sponsor workflows and historical milestone/spend data to calibrate policy thresholds and retrospective scoring
+- Biggest blocker: the main blocker is access to live sponsor milestone workflows and spend data to calibrate policy thresholds and retrospective scoring beyond synthetic traces
 - What we want from Outlier: sharp feedback on wedge and business model, plus access to builders, operators, or funders already hitting these coordination problems
 
 ## Why this repo exists
@@ -91,6 +91,12 @@ python3 -m http.server 4175 -d prototype
 ```
 
 Then open `http://localhost:4175`.
+
+## What Is Real Today
+
+- Real today: a local interactive prototype with two scenarios, visible policy states, provenance panels, and outcome rescoring
+- Simulated today: milestone evidence, spend events, routing, and rescoring are driven by synthetic traces rather than live sponsor workflow data
+- Not yet done: public hosted demo link and production data integration
 
 ## Proof Lineage From Governance OS
 

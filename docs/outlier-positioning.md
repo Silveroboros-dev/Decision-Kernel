@@ -4,7 +4,7 @@
 
 - Current state: docs-first pivot package with concrete walkthrough and linked proof artifacts from Governance OS
 - Exact problem fit: 04 Verification without managers, 07 Cost governance for agents, with 05 Coordination without companies as the extension
-- Biggest blocker: access to live sponsor workflows and historical milestone/spend data to calibrate policy thresholds and retrospective scoring
+- Biggest blocker: the main blocker is access to live sponsor milestone workflows and spend data to calibrate policy thresholds and retrospective scoring beyond synthetic traces
 - What we want from Outlier: feedback on commercialization, access to adjacent builders and funders, and pressure-testing of the wedge before heavier implementation
 
 ## Best-fit problem framing

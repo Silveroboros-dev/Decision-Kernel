@@ -107,6 +107,14 @@ h3 {
   line-height: 1.55;
 }
 
+.hero-note {
+  margin: 14px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
 .metric-list {
   list-style: none;
   padding: 0;
