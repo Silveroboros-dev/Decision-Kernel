@@ -174,7 +174,6 @@ If you only read three things, read these in order:
 - `docs/thesis.md`: the conceptual argument
 - `docs/system-model.md`: entities, flows, authority, and scoring logic
 - `docs/mvp-roadmap.md`: what to build first
-- `docs/outlier-positioning.md`: submission framing for the Request for Builders
 
 ## Working name
 
