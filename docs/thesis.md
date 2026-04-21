@@ -71,6 +71,29 @@ It is not trying to solve funding without equity directly in v1. It is solving a
 
 The system does not need to solve all of those at once. It only needs to make one primitive trustworthy: signal enters, policy runs, exceptions escalate, outcomes are scored.
 
+## Beyond the chain
+
+Decision Kernel extends the validator idea beyond on-chain state transitions to off-chain work claims.
+
+A milestone completion claim, a spend event, or a delegated authority change is a kind of state transition in a hybrid team. The policy is the validator, provenance is the evidence trail, and retrospective scoring is what keeps the validator honest over time.
+
+That does not mean token design comes first. The sequence should be:
+
+1. Primitive: programmable validator for milestone, spend, and authority claims.
+2. Platform: scored policy runtime and registry for reusable verification policies.
+3. Market: later, capital or conviction can route toward the policies, decision-makers, and teams that repeatedly produce better realized outcomes.
+
+This is the important ordering: verification first, financialization later.
+
+AI can help execute and improve policy in bounded ways:
+
+- draft policies
+- simulate thresholds
+- resolve narrow delegated cases
+- propose policy updates
+
+But policy improvement has to remain replayable, attributable, and outcome-scored. Otherwise the system gives up the auditability that makes the kernel defensible in the first place.
+
 ## What makes this builder-native
 
 This is not a speculative token wrapper and not an enterprise slideware platform. The wedge is operational:

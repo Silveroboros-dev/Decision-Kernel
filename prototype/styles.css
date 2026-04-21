@@ -83,10 +83,14 @@ h3 {
   line-height: 1.05;
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
 h1 {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 3.4rem);
-  max-width: 12ch;
+  font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+  max-width: 16ch;
 }
 
 h2 {

@@ -6,6 +6,10 @@ It is the pivot of Governance OS into a broader verification and cost-governance
 
 Governance OS proved the kernel in high-stakes finance: signal extraction, deterministic policy evaluation, exception routing, replayability, and audit-grade evidence. Decision Kernel generalizes that kernel for a different target: hybrid teams where work is done by humans, agents, or both, and where capital or authority cannot move safely unless the work becomes legible enough to verify.
 
+Decision Kernel extends the validator idea beyond the chain. It turns milestone, spend, and authority claims in hybrid human-agent teams into governed state transitions: evidence is compressed into signal, policy validates or escalates the claim, and realized outcomes rescore the policy over time.
+
+This repository was created in response to the Outlier Ventures Conviction Markets [Request for Builders](https://www.convictionmarkets.io/submit) open call.
+
 ## Submission Snapshot
 
 - Current state: docs-first pivot package built from Governance OS primitives, with a concrete walkthrough and linked proof artifacts from the predecessor repo
@@ -151,6 +155,8 @@ They adopt this because three pains are immediate:
 The near-term business case is milestone release control for sponsors that need explicit approval, budget governance, and auditability around hybrid execution.
 
 The moat is not just the interface. It is the accumulated policy library, decision history, provenance graph, outcome data, and trust-routing feedback loop. If Decision Kernel becomes the place where teams verify work, release budget, and learn which human or agent decision-makers are reliable, it compounds into a coordination system rather than a thin approval tool.
+
+If that loop works, high-performing policies become reusable coordination assets: the basis for future markets around verified execution, not just votes.
 
 ## Reviewer Order
 
