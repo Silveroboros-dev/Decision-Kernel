@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decision Kernel MVP</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Decision Kernel MVP</p>
+          <h1>Verification layer for milestone-gated capital release in hybrid human-agent teams.</h1>
+          <p class="hero-text">
+            One narrow loop. A contributor submits a milestone claim, evidence is compressed into structured signal,
+            policy and spend checks run, an exception is routed if needed, the decision is logged, and later outcomes
+            rescore future trust.
+          </p>
+        </div>
+        <aside class="hero-panel">
+          <p class="hero-panel-label">Primitive</p>
+          <ul class="metric-list">
+            <li><span>Problem</span><strong>#4 Verification without managers</strong></li>
+            <li><span>Secondary proof</span><strong>#7 Cost governance for agents</strong></li>
+            <li><span>Sponsor pain</span><strong>Capital should move only when work is verified</strong></li>
+          </ul>
+        </aside>
+      </header>
+
+      <main class="grid">
+        <section class="panel input-panel">
+          <div class="panel-head">
+            <div>
+              <p class="kicker">Case Input</p>
+              <h2>Milestone claim</h2>
+            </div>
+            <span class="badge badge-warn">Escalation path demo</span>
+          </div>
+
+          <div class="claim-card">
+            <div class="claim-row">
+              <span>Project</span>
+              <strong>Atlas Research Sprint</strong>
+            </div>
+            <div class="claim-row">
+              <span>Contributor request</span>
+              <strong>Release next $1,500 tranche</strong>
+            </div>
+            <div class="claim-row">
+              <span>Milestone</span>
+              <strong>Research Packet v1 complete</strong>
+            </div>
+            <div class="claim-row">
+              <span>Inputs</span>
+              <strong>Artifacts, checklist, spend ledger, workflow state</strong>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="run-demo" class="button button-primary">Run Trace</button>
+            <button id="reset-demo" class="button button-secondary">Reset</button>
+          </div>
+
+          <div class="policy-box">
+            <p class="policy-title">Compressed primitive</p>
+            <ul>
+              <li>If milestone evidence is incomplete, do not auto-clear.</li>
+              <li>If spend exceeds cap, escalate.</li>
+              <li>If release exceeds remaining budget, block.</li>
+              <li>If evidence and spend are clean, release capital automatically.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="panel trace-panel">
+          <div class="panel-head">
+            <div>
+              <p class="kicker">End-To-End Trace</p>
+              <h2>One governed execution loop</h2>
+            </div>
+            <p class="trace-caption">Click through or use “Run Trace” to reveal each state change.</p>
+          </div>
+
+          <ol class="trace-list">
+            <li class="trace-step" data-step="1">
+              <button class="trace-trigger" data-target="1">
+                <span class="trace-index">1</span>
+                <span class="trace-title">Claim submitted</span>
+              </button>
+              <div class="trace-content" id="step-1">
+                <p>The contributor asks for the next budget release and claims the milestone is complete.</p>
+                <pre><code>{
+  "case_id": "mk_001",
+  "requested_tranche_usd": 1500,
+  "milestone_id": "research_packet_v1"
+}</code></pre>
+              </div>
+            </li>
+
+            <li class="trace-step" data-step="2">
+              <button class="trace-trigger" data-target="2">
+                <span class="trace-index">2</span>
+                <span class="trace-title">Signal extracted</span>
+              </button>
+              <div class="trace-content" id="step-2">
+                <p>Messy inputs are compressed into decision-relevant state with provenance.</p>
+                <pre><code>{
+  "artifacts_present": 8,
+  "artifacts_required": 10,
+  "checklist_completion": 0.92,
+  "blocking_issues": 1,
+  "agent_spend_usd": 182.4,
+  "agent_spend_cap_usd": 150,
+  "budget_remaining_usd": 1640,
+  "confidence": 0.81
+}</code></pre>
+              </div>
+            </li>
+
+            <li class="trace-step" data-step="3">
+              <button class="trace-trigger" data-target="3">
+                <span class="trace-index">3</span>
+                <span class="trace-title">Policy and budget evaluated</span>
+              </button>
+              <div class="trace-content" id="step-3">
+                <p>The kernel checks evidence completeness, blocking issues, spend cap, and remaining budget.</p>
+                <div class="status-row">
+                  <span class="status-pill status-amber">Policy result: escalate</span>
+                  <span class="status-pill status-red">Spend over cap: +$32.40</span>
+                </div>
+                <pre><code>{
+  "reasons": [
+    "missing_required_artifacts",
+    "blocking_issue_open",
+    "agent_spend_over_cap"
+  ],
+  "eligible_decision_makers": [
+    "project_operator_human",
+    "budget_guardian_agent"
+  ]
+}</code></pre>
+              </div>
+            </li>
+
+            <li class="trace-step" data-step="4">
+              <button class="trace-trigger" data-target="4">
+                <span class="trace-index">4</span>
+                <span class="trace-title">Exception routed</span>
+              </button>
+              <div class="trace-content" id="step-4">
+                <p>The case is too material to auto-clear, so Decision Kernel opens a review exception.</p>
+                <div class="exception-box">
+                  <div>
+                    <p class="exception-label">Exception</p>
+                    <strong>Milestone and spend review</strong>
+                  </div>
+                  <span class="badge badge-critical">High severity</span>
+                </div>
+                <ul class="plain-list">
+                  <li>2 required artifacts are missing</li>
+                  <li>1 blocking issue remains open</li>
+                  <li>Agent spend is above the delegated cap</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="trace-step" data-step="5">
+              <button class="trace-trigger" data-target="5">
+                <span class="trace-index">5</span>
+                <span class="trace-title">Bounded decision logged</span>
+              </button>
+              <div class="trace-content" id="step-5">
+                <p>The reviewer approves limited continuation rather than the full release.</p>
+                <pre><code>{
+  "decision": "approve_limited_continuation",
+  "approved_next_tranche_usd": 500,
+  "conditions": [
+    "missing artifacts due within 24 hours",
+    "agent spend cap tightened to 100 USD per run",
+    "blocking issue must close before full release"
+  ]
+}</code></pre>
+              </div>
+            </li>
+
+            <li class="trace-step" data-step="6">
+              <button class="trace-trigger" data-target="6">
+                <span class="trace-index">6</span>
+                <span class="trace-title">Outcome rescored</span>
+              </button>
+              <div class="trace-content" id="step-6">
+                <p>After the missing evidence is delivered and spend stays inside the tighter cap, the system updates trust.</p>
+                <div class="score-grid">
+                  <div>
+                    <span>Policy score</span>
+                    <strong>+0.04</strong>
+                  </div>
+                  <div>
+                    <span>Decision-maker score</span>
+                    <strong>+0.07</strong>
+                  </div>
+                  <div>
+                    <span>Agent trust</span>
+                    <strong>+0.03</strong>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="panel detail-panel">
+          <div class="panel-head">
+            <div>
+              <p class="kicker">Operator View</p>
+              <h2>Why this primitive matters</h2>
+            </div>
+          </div>
+
+          <div class="detail-block">
+            <h3>What moves</h3>
+            <p id="capital-result">Before the decision, no capital moves. After the bounded approval, only $500 is released.</p>
+          </div>
+
+          <div class="detail-block">
+            <h3>What is governed</h3>
+            <ul class="plain-list">
+              <li>Milestone evidence completeness</li>
+              <li>Blocking issue status</li>
+              <li>Agent and tool spend</li>
+              <li>Budget release amount</li>
+              <li>Future trust and authority</li>
+            </ul>
+          </div>
+
+          <div class="detail-block">
+            <h3>Who this is for</h3>
+            <p>
+              Protocol foundations, accelerators, grant programs, studios, and companies funding hybrid teams. The MVP is
+              not a capital instrument. It is the verification layer those sponsors would need before capital can move
+              programmatically.
+            </p>
+          </div>
+
+          <div class="detail-block">
+            <h3>Audit note</h3>
+            <p id="audit-note">
+              No recommendation is hidden. The escalation reason, bounded decision, and later outcome are all explicit and
+              reviewable.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,6 +1,8 @@
 # Decision Kernel
 
-Decision Kernel is the pivot of Governance OS into a broader verification and cost-governance layer for hybrid human-agent systems.
+Decision Kernel is the verification layer for milestone-gated capital release in hybrid human-agent teams, with agent spend governed under policy.
+
+It is the pivot of Governance OS into a broader verification and cost-governance layer for hybrid human-agent systems.
 
 Governance OS proved the kernel in high-stakes finance: signal extraction, deterministic policy evaluation, exception routing, replayability, and audit-grade evidence. Decision Kernel generalizes that kernel for a different target: hybrid teams where work is done by humans, agents, or both, and where capital or authority cannot move safely unless the work becomes legible enough to verify.
 
@@ -70,6 +72,26 @@ The shortest way to understand the product is the first target case:
 7. The result is not just a yes or no. It is a governed release of budget, authority, or further work.
 
 Read the full example in [docs/demo-walkthrough.md](docs/demo-walkthrough.md).
+
+## MVP
+
+There is now a minimal prototype in [prototype/index.html](prototype/index.html).
+
+It demonstrates one full trace:
+
+1. a contributor submits a milestone claim
+2. evidence is extracted into structured signal
+3. policy and budget checks escalate the case
+4. the bounded decision is logged
+5. later outcomes rescore trust
+
+To run it locally:
+
+```bash
+python3 -m http.server 4173 -d prototype
+```
+
+Then open `http://localhost:4173`.
 
 ## Proof Lineage From Governance OS
 
