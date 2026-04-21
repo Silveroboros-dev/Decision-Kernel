@@ -1,4 +1,4 @@
-# Outlier / Request for Builders Positioning
+# Outlier Ventures/ Request for Builders Positioning
 
 ## Submission snapshot
 
@@ -13,9 +13,6 @@ Decision Kernel maps most directly to:
 
 - 04 Verification without managers
 - 07 Cost governance for agents
-
-With a plausible extension into:
-
 - 05 Coordination without companies
 
 ## Submission thesis
@@ -48,18 +45,6 @@ Decision Kernel keeps those primitives and changes the target problem. Instead o
 
 Hybrid human-agent teams need a kernel that can verify milestones, govern agent spend, auto-clear routine work, escalate true exceptions, and learn which policies and decision-makers deserve greater trust over time. Decision Kernel is that layer.
 
-## Recommended framing in a submission
-
-Lead with:
-- a pivot from Governance OS
-- best fit with problem 04 and problem 07
-- verification before financialization
-- agent spend as the new governed payroll
-
-Make explicit:
-- this is the operational substrate required before more ambitious ownership or funding instruments work
-- the immediate wedge is milestone verification and cost governance
-- the longer-term extension is coordination without companies
 
 ## First wedge and moat
 
@@ -78,14 +63,3 @@ What compounds:
 - outcome-linked trust scores
 - routing data across humans and agents
 
-## What not to overclaim yet
-
-Do not present it as:
-- a finished capital instrument
-- a token model
-- a full replacement for firms or management
-- a generic governance platform for every collective problem
-
-Present it as:
-- the operational substrate those futures would require
-- the verification layer that makes later capital allocation plausible
