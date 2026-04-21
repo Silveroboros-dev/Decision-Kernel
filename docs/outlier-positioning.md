@@ -4,7 +4,7 @@
 
 - Current state: docs-first pivot package with concrete walkthrough and linked proof artifacts from Governance OS
 - Exact problem fit: 04 Verification without managers, 07 Cost governance for agents, with 05 Coordination without companies as the extension
-- Biggest blocker: finding the first workflow where milestone verification and agent spend governance are painful enough to become a clear buying or adoption event
+- Biggest blocker: access to live sponsor workflows and historical milestone/spend data to calibrate policy thresholds and retrospective scoring
 - What we want from Outlier: feedback on commercialization, access to adjacent builders and funders, and pressure-testing of the wedge before heavier implementation
 
 ## Best-fit problem framing
@@ -64,10 +64,10 @@ Make explicit:
 ## First wedge and moat
 
 First wedge:
-- small hybrid teams, studios, operators, and funders who already need to verify milestones and control agent spend before releasing more budget or authority
+- protocol foundations running milestone-based grant programs for hybrid human-agent contributor teams
 
 Why they care:
-- current verification is manual
+- current milestone verification is manual
 - agent costs can run ahead of judgment
 - there is no clean audit trail or accumulated trust history
 

@@ -11,6 +11,8 @@
   --warn-soft: rgba(154, 93, 23, 0.14);
   --danger: #8a2e2e;
   --danger-soft: rgba(138, 46, 46, 0.12);
+  --ok: #1f8051;
+  --ok-soft: rgba(31, 128, 81, 0.12);
   --shadow: 0 18px 36px rgba(31, 29, 25, 0.08);
 }
 
@@ -171,6 +173,12 @@ h3 {
   border-color: rgba(138, 46, 46, 0.22);
 }
 
+.badge-ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+  border-color: rgba(31, 128, 81, 0.22);
+}
+
 .claim-card {
   display: grid;
   gap: 12px;
@@ -193,10 +201,34 @@ h3 {
   text-align: right;
 }
 
+.scenario-switch,
 .actions {
   display: flex;
   gap: 10px;
   margin-bottom: 18px;
+}
+
+.scenario-button {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.48);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.scenario-button:hover,
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.scenario-button.is-active {
+  background: var(--accent-soft);
+  border-color: rgba(13, 92, 99, 0.28);
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .button {
@@ -206,10 +238,6 @@ h3 {
   padding: 11px 16px;
   cursor: pointer;
   transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
-}
-
-.button:hover {
-  transform: translateY(-1px);
 }
 
 .button-primary {
@@ -230,7 +258,8 @@ h3 {
   background: rgba(255, 255, 255, 0.38);
 }
 
-.policy-box {
+.policy-box,
+.detail-block {
   padding: 16px;
 }
 
@@ -364,10 +393,6 @@ pre {
   gap: 14px;
 }
 
-.detail-block {
-  padding: 16px;
-}
-
 .score-grid {
   margin-top: 12px;
 }
@@ -384,6 +409,27 @@ pre {
   font-size: 0.82rem;
   color: var(--ink-soft);
   margin-bottom: 4px;
+}
+
+.provenance-details summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.provenance-content {
+  margin-top: 14px;
+}
+
+.provenance-group + .provenance-group {
+  margin-top: 14px;
+}
+
+.provenance-group-title {
+  margin: 0 0 8px;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
 }
 
 @keyframes reveal {
@@ -419,11 +465,13 @@ pre {
   .panel-head,
   .claim-row,
   .exception-box,
-  .actions {
+  .actions,
+  .scenario-switch {
     flex-direction: column;
   }
 
-  .actions .button {
+  .actions .button,
+  .scenario-button {
     width: 100%;
   }
 }

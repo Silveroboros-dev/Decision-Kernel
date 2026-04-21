@@ -1,6 +1,6 @@
 # Decision Kernel
 
-Decision Kernel is the verification layer for milestone-gated capital release in hybrid human-agent teams, with agent spend governed under policy.
+Decision Kernel is the verification and spend-governance layer sponsors use before releasing milestone-based budgets to hybrid human-agent teams.
 
 It is the pivot of Governance OS into a broader verification and cost-governance layer for hybrid human-agent systems.
 
@@ -10,7 +10,7 @@ Governance OS proved the kernel in high-stakes finance: signal extraction, deter
 
 - Current state: docs-first pivot package built from Governance OS primitives, with a concrete walkthrough and linked proof artifacts from the predecessor repo
 - Best-fit problems: 04 Verification without managers, 07 Cost governance for agents, with 05 Coordination without companies as the extension
-- Biggest blocker: validating the first non-finance workflow where milestone verification, spend control, and retrospective rescoring are painful enough that teams will adopt this as infrastructure
+- Biggest blocker: access to live sponsor workflows and historical milestone/spend data to calibrate policy thresholds and retrospective scoring
 - What we want from Outlier: sharp feedback on wedge and business model, plus access to builders, operators, or funders already hitting these coordination problems
 
 ## Why this repo exists
@@ -77,21 +77,20 @@ Read the full example in [docs/demo-walkthrough.md](docs/demo-walkthrough.md).
 
 There is now a minimal prototype in [prototype/index.html](prototype/index.html).
 
-It demonstrates one full trace:
+It demonstrates both halves of the kernel:
 
-1. a contributor submits a milestone claim
-2. evidence is extracted into structured signal
-3. policy and budget checks escalate the case
-4. the bounded decision is logged
-5. later outcomes rescore trust
+1. an exception path where incomplete evidence and spend overrun escalate the case
+2. an auto-clear path where routine work releases the milestone tranche automatically
+3. provenance for the signal extraction and policy decision
+4. retrospective rescoring after the outcome arrives
 
 To run it locally:
 
 ```bash
-python3 -m http.server 4173 -d prototype
+python3 -m http.server 4175 -d prototype
 ```
 
-Then open `http://localhost:4173`.
+Then open `http://localhost:4175`.
 
 ## Proof Lineage From Governance OS
 
@@ -129,21 +128,21 @@ There is a fuller guide in [docs/proof-artifacts.md](docs/proof-artifacts.md).
 - Ex post learning matters more than ex ante confidence.
 - Governance should scale without collapsing into bureaucracy.
 
-## First Wedge User
+## First Payer
 
-The first user is not a giant enterprise governance team. It is a small hybrid team, operator, studio, or funder already allocating real work and real spend across humans and agents, but still verifying outcomes manually.
+The first payer is a protocol foundation running milestone-based grant programs for hybrid human-agent contributor teams.
 
-They adopt this because they have three immediate pains:
+The first user is the program operator reviewing whether work is sufficiently verified to release the next tranche. The governed subjects are contributors and agents spending against that budget.
+
+They adopt this because three pains are immediate:
 
 - milestone claims are noisy and hard to verify
 - agent and tool spend can run ahead of judgment
 - every exception currently turns into ad hoc chat, meetings, or manual review
 
-The wedge is narrow on purpose: milestone verification and spend governance for hybrid workflows.
-
 ## Why This Can Become a Business
 
-The near-term business case is workflow control for teams that need explicit approval, budget governance, and auditability around hybrid execution.
+The near-term business case is milestone release control for sponsors that need explicit approval, budget governance, and auditability around hybrid execution.
 
 The moat is not just the interface. It is the accumulated policy library, decision history, provenance graph, outcome data, and trust-routing feedback loop. If Decision Kernel becomes the place where teams verify work, release budget, and learn which human or agent decision-makers are reliable, it compounds into a coordination system rather than a thin approval tool.
 
