@@ -15,7 +15,7 @@ This repository was created in response to the Outlier Ventures Conviction Marke
 - Current state: docs-first pivot package built from Governance OS primitives, with a concrete walkthrough and linked proof artifacts from the predecessor repo
 - Best-fit problems: 04 Verification without managers, 07 Cost governance for agents, with 05 Coordination without companies as the extension
 - Biggest blocker: the main blocker is access to live sponsor milestone workflows and spend data to calibrate policy thresholds and retrospective scoring beyond synthetic traces
-- What we want from Outlier: sharp feedback on wedge and business model, plus access to builders, operators, or funders already hitting these coordination problems
+- What we want from Outlier Ventures: sharp feedback on wedge and business model, plus access to builders, operators, or funders already hitting these coordination problems
 
 ## Why this repo exists
 
