@@ -217,6 +217,7 @@ h3 {
 .actions {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
   margin-bottom: 18px;
 }
 
@@ -360,7 +361,8 @@ pre {
 }
 
 .status-row,
-.score-grid {
+.score-grid,
+.authority-grid {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -409,18 +411,34 @@ pre {
   margin-top: 12px;
 }
 
-.score-grid > div {
+.score-grid > div,
+.authority-grid > div {
   min-width: 120px;
   padding: 12px;
   border-radius: 12px;
   background: rgba(13, 92, 99, 0.08);
 }
 
-.score-grid span {
+.score-grid span,
+.authority-grid span {
   display: block;
   font-size: 0.82rem;
   color: var(--ink-soft);
   margin-bottom: 4px;
+}
+
+.authority-grid {
+  margin-top: 12px;
+}
+
+.authority-grid > div {
+  flex: 1 1 220px;
+}
+
+.authority-grid strong {
+  display: block;
+  line-height: 1.35;
+  font-size: 0.92rem;
 }
 
 .provenance-details summary {

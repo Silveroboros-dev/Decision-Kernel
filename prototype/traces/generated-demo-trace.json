@@ -1,0 +1,1308 @@
+{
+  "generatedAt": "static-fixture-build",
+  "source": "src/demo/generatePrototypeTrace.ts",
+  "scenarios": [
+    {
+      "scenarioId": "routine-approval",
+      "label": "Routine approval",
+      "badgeTone": "ok",
+      "description": "Complete milestone evidence and agent spend inside policy. The kernel auto-clears the tranche.",
+      "firstPayer": "Protocol foundations running milestone-based grant programs for hybrid human-agent contributor teams.",
+      "claim": {
+        "id": "mk_routine_001",
+        "project": "Protocol Foundation Grant 08",
+        "sponsorType": "protocol_foundation",
+        "milestoneId": "research_packet_v1",
+        "requestedTrancheUsd": 1500,
+        "materialityUsd": 1500,
+        "submittedBy": "builder_team_alpha",
+        "submittedAt": "2026-04-24T10:00:00.000Z",
+        "evidence": [
+          {
+            "id": "summary_memo",
+            "type": "artifact",
+            "required": true,
+            "present": true,
+            "description": "research packet summary memo is present",
+            "provenanceRef": "artifact:packet-v1-summary.md lines 14-58"
+          },
+          {
+            "id": "source_transcripts",
+            "type": "artifact",
+            "required": true,
+            "present": true,
+            "description": "source transcript bundle is present",
+            "provenanceRef": "artifact:source-transcripts.zip manifest"
+          },
+          {
+            "id": "synthesis_table",
+            "type": "artifact",
+            "required": true,
+            "present": true,
+            "description": "synthesis table covers all requested categories",
+            "provenanceRef": "artifact:synthesis-table.csv rows 1-38"
+          },
+          {
+            "id": "validation_report",
+            "type": "test_log",
+            "required": true,
+            "present": true,
+            "description": "validation report shows no open blockers",
+            "provenanceRef": "artifact:validation-report.md lines 3-22"
+          },
+          {
+            "id": "deployment_url",
+            "type": "deployment_url",
+            "required": true,
+            "present": true,
+            "description": "review URL is live",
+            "provenanceRef": "deploy:research-packet-v1-preview"
+          },
+          {
+            "id": "spend_ledger",
+            "type": "spend_ledger",
+            "required": true,
+            "present": true,
+            "description": "agent spend ledger is attached",
+            "provenanceRef": "ledger:agent-spend-2026-04-24"
+          }
+        ],
+        "workflow": {
+          "completedItems": 10,
+          "totalItems": 10,
+          "blockingIssues": 0
+        },
+        "spend": {
+          "agentSpendUsd": 118.2,
+          "agentSpendCapUsd": 150,
+          "budgetRemainingUsd": 1640
+        }
+      },
+      "signal": {
+        "caseId": "mk_routine_001",
+        "milestoneId": "research_packet_v1",
+        "artifactsPresent": 6,
+        "artifactsRequired": 6,
+        "requiredEvidenceMissing": [],
+        "testLogsPresent": true,
+        "deploymentUrlPresent": true,
+        "checklistCompletion": 1,
+        "blockingIssues": 0,
+        "agentSpendUsd": 118.2,
+        "agentSpendCapUsd": 150,
+        "budgetRemainingUsd": 1640,
+        "requestedTrancheUsd": 1500,
+        "materialityUsd": 1500,
+        "confidence": 0.98,
+        "provenanceRefs": [
+          "artifact:packet-v1-summary.md lines 14-58",
+          "artifact:source-transcripts.zip manifest",
+          "artifact:synthesis-table.csv rows 1-38",
+          "artifact:validation-report.md lines 3-22",
+          "deploy:research-packet-v1-preview",
+          "ledger:agent-spend-2026-04-24"
+        ]
+      },
+      "budgetEvaluation": {
+        "result": "within_cap",
+        "agentSpendUsd": 118.2,
+        "agentSpendCapUsd": 150,
+        "spendOverCapUsd": 0,
+        "budgetRemainingUsd": 1640,
+        "requestedTrancheUsd": 1500,
+        "budgetShortfallUsd": 0,
+        "reasons": []
+      },
+      "policyEvaluation": {
+        "policyVersion": "milestone_release_v1",
+        "result": "auto_clear",
+        "workVerificationResult": "verified",
+        "spendGovernanceResult": "within_cap",
+        "reasons": [],
+        "releaseAmountUsd": 1500,
+        "confidence": 0.98,
+        "policyTrustUsed": 0.78
+      },
+      "routingDecision": {
+        "route": "no_review",
+        "authorityMode": "automatic",
+        "eligibleDecisionMakers": [
+          "decision_kernel"
+        ],
+        "reasons": []
+      },
+      "loggedDecision": {
+        "decision": "auto_release",
+        "approvedNextTrancheUsd": 1500,
+        "decidedBy": "decision_kernel",
+        "rationale": "Evidence is complete, spend is inside policy, and trust is high enough for automatic release.",
+        "conditions": [],
+        "policyVersion": "milestone_release_v1"
+      },
+      "outcome": {
+        "caseId": "mk_routine_001",
+        "accepted": true,
+        "reversed": false,
+        "remediationCostUsd": 0,
+        "downstreamQualityScore": 0.94,
+        "stayedWithinAdjustedSpendCap": true,
+        "severity": "normal",
+        "evidenceIssue": "none",
+        "responsibilityScopes": [
+          "policy_auto_clear",
+          "agent_budget_discipline"
+        ],
+        "comparableFailureCount": 0,
+        "selfEscalated": false,
+        "externalDependencyFailure": false,
+        "notes": "Milestone accepted downstream with no remediation and spend stayed under the delegated cap."
+      },
+      "scoreUpdate": {
+        "before": {
+          "policyAutoClear": {
+            "mean": 0.78,
+            "evidenceStrength": 42,
+            "band": "normal"
+          },
+          "reviewerMaterialReview": {
+            "mean": 0.72,
+            "evidenceStrength": 38,
+            "band": "normal"
+          },
+          "agentBudgetDiscipline": {
+            "mean": 0.74,
+            "evidenceStrength": 26,
+            "band": "supervised"
+          }
+        },
+        "after": {
+          "policyAutoClear": {
+            "mean": 0.784,
+            "evidenceStrength": 43,
+            "band": "normal"
+          },
+          "reviewerMaterialReview": {
+            "mean": 0.72,
+            "evidenceStrength": 38,
+            "band": "normal"
+          },
+          "agentBudgetDiscipline": {
+            "mean": 0.746,
+            "evidenceStrength": 27,
+            "band": "supervised"
+          }
+        },
+        "delta": {
+          "policyAutoClear": 0.004,
+          "reviewerMaterialReview": 0,
+          "agentBudgetDiscipline": 0.006
+        },
+        "assessment": {
+          "severity": "normal",
+          "outcomeQuality": 0.94,
+          "eventWeight": 1,
+          "redLineEvent": false,
+          "affectedScopes": [
+            "policy_auto_clear",
+            "agent_budget_discipline"
+          ],
+          "authoritySignal": "none",
+          "rationale": "Outcome updates scoped trust; authority stays unchanged by default."
+        },
+        "authorityEvaluation": {
+          "before": {
+            "policyAutoClear": {
+              "mean": 0.78,
+              "evidenceStrength": 42,
+              "band": "normal"
+            },
+            "reviewerMaterialReview": {
+              "mean": 0.72,
+              "evidenceStrength": 38,
+              "band": "normal"
+            },
+            "agentBudgetDiscipline": {
+              "mean": 0.74,
+              "evidenceStrength": 26,
+              "band": "supervised"
+            }
+          },
+          "after": {
+            "policyAutoClear": {
+              "mean": 0.784,
+              "evidenceStrength": 43,
+              "band": "normal"
+            },
+            "reviewerMaterialReview": {
+              "mean": 0.72,
+              "evidenceStrength": 38,
+              "band": "normal"
+            },
+            "agentBudgetDiscipline": {
+              "mean": 0.746,
+              "evidenceStrength": 27,
+              "band": "supervised"
+            }
+          },
+          "decisions": [
+            {
+              "action": "NO_CHANGE",
+              "scope": "policy_auto_clear",
+              "reason": "Trust updated, but authority evidence is not strong enough.",
+              "evidence": [
+                "case:mk_routine_001",
+                "severity:normal",
+                "event_weight:1",
+                "comparable_failures:0"
+              ],
+              "requiresHumanApproval": false
+            }
+          ],
+          "policyRevisionCandidates": [],
+          "summary": "Scoped trust updated; authority unchanged."
+        },
+        "interpretation": "Outcome updates scoped trust; authority stays unchanged by default. Scoped trust updated; authority unchanged."
+      },
+      "futureRouting": {
+        "before": {
+          "policyResult": "auto_clear",
+          "route": "no_review",
+          "reasons": []
+        },
+        "after": {
+          "policyResult": "auto_clear",
+          "route": "no_review",
+          "reasons": []
+        },
+        "authorityBefore": {
+          "policyAutoClearTrust": 0.78,
+          "reviewerMaterialReviewTrust": 0.72,
+          "agentBudgetDisciplineTrust": 0.74,
+          "policyAutoClearBand": "normal",
+          "reviewerMaterialReviewBand": "normal",
+          "agentBudgetDisciplineBand": "supervised",
+          "policyAutoClearEligible": true,
+          "materialExceptionReviewer": "project_operator_human",
+          "spendBreachReviewer": "project_operator_human",
+          "summary": "policy auto-clear eligible (normal); material exceptions route to project_operator_human (normal); spend breaches route to project_operator_human (supervised)"
+        },
+        "authorityAfter": {
+          "policyAutoClearTrust": 0.784,
+          "reviewerMaterialReviewTrust": 0.72,
+          "agentBudgetDisciplineTrust": 0.746,
+          "policyAutoClearBand": "normal",
+          "reviewerMaterialReviewBand": "normal",
+          "agentBudgetDisciplineBand": "supervised",
+          "policyAutoClearEligible": true,
+          "materialExceptionReviewer": "project_operator_human",
+          "spendBreachReviewer": "project_operator_human",
+          "summary": "policy auto-clear eligible (normal); material exceptions route to project_operator_human (normal); spend breaches route to project_operator_human (supervised)"
+        },
+        "authorityChanges": [],
+        "changed": false,
+        "summary": "Future routing remains auto_clear/no_review."
+      },
+      "provenance": {
+        "Source spans": [
+          "artifact:packet-v1-summary.md lines 14-58 confirms research packet summary memo is present",
+          "artifact:source-transcripts.zip manifest confirms source transcript bundle is present",
+          "artifact:synthesis-table.csv rows 1-38 confirms synthesis table covers all requested categories",
+          "artifact:validation-report.md lines 3-22 confirms validation report shows no open blockers",
+          "deploy:research-packet-v1-preview confirms review URL is live",
+          "ledger:agent-spend-2026-04-24 confirms agent spend ledger is attached"
+        ],
+        "Missing evidence": [
+          "No required evidence missing"
+        ],
+        "Policy": [
+          "policy:milestone_release_v1 checks evidence completeness, blockers, confidence, and trust",
+          "policy:agent_spend_guard_v1 separates work verification from spend governance"
+        ]
+      }
+    },
+    {
+      "scenarioId": "missing-evidence",
+      "label": "Missing evidence",
+      "badgeTone": "warn",
+      "description": "The claim says complete, but required proof is missing. The kernel routes the material exception to human review.",
+      "firstPayer": "Protocol foundations running milestone-based grant programs where operators need evidence before releasing budget.",
+      "claim": {
+        "id": "mk_missing_001",
+        "project": "Protocol Foundation Grant 07",
+        "sponsorType": "protocol_foundation",
+        "milestoneId": "research_packet_v1",
+        "requestedTrancheUsd": 1500,
+        "materialityUsd": 1500,
+        "submittedBy": "builder_team_beta",
+        "submittedAt": "2026-04-21T13:00:00.000Z",
+        "evidence": [
+          {
+            "id": "summary_memo",
+            "type": "artifact",
+            "required": true,
+            "present": true,
+            "description": "research packet summary memo is present",
+            "provenanceRef": "artifact:packet-v1-summary.md lines 18-44"
+          },
+          {
+            "id": "source_transcripts",
+            "type": "artifact",
+            "required": true,
+            "present": true,
+            "description": "source transcript bundle is present",
+            "provenanceRef": "artifact:source-transcripts.zip manifest"
+          },
+          {
+            "id": "synthesis_table",
+            "type": "artifact",
+            "required": true,
+            "present": true,
+            "description": "synthesis table is present but incomplete",
+            "provenanceRef": "artifact:synthesis-table.csv rows 1-24"
+          },
+          {
+            "id": "validation_report",
+            "type": "test_log",
+            "required": true,
+            "present": false,
+            "description": "validation report showing acceptance checks",
+            "provenanceRef": "artifact:validation-report.md"
+          },
+          {
+            "id": "deployment_url",
+            "type": "deployment_url",
+            "required": true,
+            "present": false,
+            "description": "review URL for sponsor inspection",
+            "provenanceRef": "deploy:research-packet-v1-preview"
+          },
+          {
+            "id": "spend_ledger",
+            "type": "spend_ledger",
+            "required": true,
+            "present": true,
+            "description": "agent spend ledger is attached",
+            "provenanceRef": "ledger:agent-spend-2026-04-21"
+          }
+        ],
+        "workflow": {
+          "completedItems": 8,
+          "totalItems": 10,
+          "blockingIssues": 0
+        },
+        "spend": {
+          "agentSpendUsd": 91.8,
+          "agentSpendCapUsd": 150,
+          "budgetRemainingUsd": 1640
+        }
+      },
+      "signal": {
+        "caseId": "mk_missing_001",
+        "milestoneId": "research_packet_v1",
+        "artifactsPresent": 4,
+        "artifactsRequired": 6,
+        "requiredEvidenceMissing": [
+          "validation_report",
+          "deployment_url"
+        ],
+        "testLogsPresent": false,
+        "deploymentUrlPresent": false,
+        "checklistCompletion": 0.8,
+        "blockingIssues": 0,
+        "agentSpendUsd": 91.8,
+        "agentSpendCapUsd": 150,
+        "budgetRemainingUsd": 1640,
+        "requestedTrancheUsd": 1500,
+        "materialityUsd": 1500,
+        "confidence": 0.86,
+        "provenanceRefs": [
+          "artifact:packet-v1-summary.md lines 18-44",
+          "artifact:source-transcripts.zip manifest",
+          "artifact:synthesis-table.csv rows 1-24",
+          "ledger:agent-spend-2026-04-21"
+        ]
+      },
+      "budgetEvaluation": {
+        "result": "within_cap",
+        "agentSpendUsd": 91.8,
+        "agentSpendCapUsd": 150,
+        "spendOverCapUsd": 0,
+        "budgetRemainingUsd": 1640,
+        "requestedTrancheUsd": 1500,
+        "budgetShortfallUsd": 0,
+        "reasons": []
+      },
+      "policyEvaluation": {
+        "policyVersion": "milestone_release_v1",
+        "result": "escalate",
+        "workVerificationResult": "incomplete",
+        "spendGovernanceResult": "within_cap",
+        "reasons": [
+          "missing_required_evidence",
+          "checklist_below_policy_threshold",
+          "confidence_below_autoclear_threshold"
+        ],
+        "releaseAmountUsd": 0,
+        "confidence": 0.86,
+        "policyTrustUsed": 0.77
+      },
+      "routingDecision": {
+        "route": "senior_reviewer",
+        "authorityMode": "human_required",
+        "eligibleDecisionMakers": [
+          "senior_reviewer"
+        ],
+        "reasons": [
+          "missing_required_evidence",
+          "checklist_below_policy_threshold",
+          "confidence_below_autoclear_threshold",
+          "high_materiality_requires_human_review",
+          "reviewer_trust_below_material_review_threshold"
+        ]
+      },
+      "loggedDecision": {
+        "decision": "approve_limited_continuation",
+        "approvedNextTrancheUsd": 500,
+        "decidedBy": "senior_reviewer",
+        "rationale": "The claim has enough promise to continue, but evidence or spend problems prevent full release.",
+        "conditions": [
+          "missing evidence due within 24 hours",
+          "blocking issues must close before full release",
+          "agent spend cap tightened for the next run"
+        ],
+        "policyVersion": "milestone_release_v1"
+      },
+      "outcome": {
+        "caseId": "mk_missing_001",
+        "accepted": true,
+        "reversed": false,
+        "remediationCostUsd": 0,
+        "downstreamQualityScore": 0.88,
+        "stayedWithinAdjustedSpendCap": true,
+        "severity": "normal",
+        "evidenceIssue": "none",
+        "responsibilityScopes": [
+          "reviewer_material_review"
+        ],
+        "comparableFailureCount": 0,
+        "selfEscalated": false,
+        "externalDependencyFailure": false,
+        "notes": "Human review caught the missing proof. The team supplied it before any full tranche release."
+      },
+      "scoreUpdate": {
+        "before": {
+          "policyAutoClear": {
+            "mean": 0.77,
+            "evidenceStrength": 40,
+            "band": "normal"
+          },
+          "reviewerMaterialReview": {
+            "mean": 0.62,
+            "evidenceStrength": 24,
+            "band": "supervised"
+          },
+          "agentBudgetDiscipline": {
+            "mean": 0.73,
+            "evidenceStrength": 24,
+            "band": "supervised"
+          }
+        },
+        "after": {
+          "policyAutoClear": {
+            "mean": 0.77,
+            "evidenceStrength": 40,
+            "band": "normal"
+          },
+          "reviewerMaterialReview": {
+            "mean": 0.63,
+            "evidenceStrength": 25,
+            "band": "supervised"
+          },
+          "agentBudgetDiscipline": {
+            "mean": 0.73,
+            "evidenceStrength": 24,
+            "band": "supervised"
+          }
+        },
+        "delta": {
+          "policyAutoClear": 0,
+          "reviewerMaterialReview": 0.01,
+          "agentBudgetDiscipline": 0
+        },
+        "assessment": {
+          "severity": "normal",
+          "outcomeQuality": 0.88,
+          "eventWeight": 1,
+          "redLineEvent": false,
+          "affectedScopes": [
+            "reviewer_material_review"
+          ],
+          "authoritySignal": "none",
+          "rationale": "Outcome updates scoped trust; authority stays unchanged by default."
+        },
+        "authorityEvaluation": {
+          "before": {
+            "policyAutoClear": {
+              "mean": 0.77,
+              "evidenceStrength": 40,
+              "band": "normal"
+            },
+            "reviewerMaterialReview": {
+              "mean": 0.62,
+              "evidenceStrength": 24,
+              "band": "supervised"
+            },
+            "agentBudgetDiscipline": {
+              "mean": 0.73,
+              "evidenceStrength": 24,
+              "band": "supervised"
+            }
+          },
+          "after": {
+            "policyAutoClear": {
+              "mean": 0.77,
+              "evidenceStrength": 40,
+              "band": "normal"
+            },
+            "reviewerMaterialReview": {
+              "mean": 0.63,
+              "evidenceStrength": 25,
+              "band": "supervised"
+            },
+            "agentBudgetDiscipline": {
+              "mean": 0.73,
+              "evidenceStrength": 24,
+              "band": "supervised"
+            }
+          },
+          "decisions": [
+            {
+              "action": "NO_CHANGE",
+              "scope": "reviewer_material_review",
+              "reason": "Trust updated, but authority evidence is not strong enough.",
+              "evidence": [
+                "case:mk_missing_001",
+                "severity:normal",
+                "event_weight:1",
+                "comparable_failures:0"
+              ],
+              "requiresHumanApproval": false
+            }
+          ],
+          "policyRevisionCandidates": [],
+          "summary": "Scoped trust updated; authority unchanged."
+        },
+        "interpretation": "Outcome updates scoped trust; authority stays unchanged by default. Scoped trust updated; authority unchanged."
+      },
+      "futureRouting": {
+        "before": {
+          "policyResult": "escalate",
+          "route": "senior_reviewer",
+          "reasons": [
+            "missing_required_evidence",
+            "checklist_below_policy_threshold",
+            "confidence_below_autoclear_threshold"
+          ]
+        },
+        "after": {
+          "policyResult": "escalate",
+          "route": "senior_reviewer",
+          "reasons": [
+            "missing_required_evidence",
+            "checklist_below_policy_threshold",
+            "confidence_below_autoclear_threshold"
+          ]
+        },
+        "authorityBefore": {
+          "policyAutoClearTrust": 0.77,
+          "reviewerMaterialReviewTrust": 0.62,
+          "agentBudgetDisciplineTrust": 0.73,
+          "policyAutoClearBand": "normal",
+          "reviewerMaterialReviewBand": "supervised",
+          "agentBudgetDisciplineBand": "supervised",
+          "policyAutoClearEligible": true,
+          "materialExceptionReviewer": "senior_reviewer",
+          "spendBreachReviewer": "project_operator_human",
+          "summary": "policy auto-clear eligible (normal); material exceptions route to senior_reviewer (supervised); spend breaches route to project_operator_human (supervised)"
+        },
+        "authorityAfter": {
+          "policyAutoClearTrust": 0.77,
+          "reviewerMaterialReviewTrust": 0.63,
+          "agentBudgetDisciplineTrust": 0.73,
+          "policyAutoClearBand": "normal",
+          "reviewerMaterialReviewBand": "supervised",
+          "agentBudgetDisciplineBand": "supervised",
+          "policyAutoClearEligible": true,
+          "materialExceptionReviewer": "senior_reviewer",
+          "spendBreachReviewer": "project_operator_human",
+          "summary": "policy auto-clear eligible (normal); material exceptions route to senior_reviewer (supervised); spend breaches route to project_operator_human (supervised)"
+        },
+        "authorityChanges": [],
+        "changed": false,
+        "summary": "Future routing remains escalate/senior_reviewer."
+      },
+      "provenance": {
+        "Source spans": [
+          "artifact:packet-v1-summary.md lines 18-44 confirms research packet summary memo is present",
+          "artifact:source-transcripts.zip manifest confirms source transcript bundle is present",
+          "artifact:synthesis-table.csv rows 1-24 confirms synthesis table is present but incomplete",
+          "ledger:agent-spend-2026-04-21 confirms agent spend ledger is attached"
+        ],
+        "Missing evidence": [
+          "validation_report: validation report showing acceptance checks",
+          "deployment_url: review URL for sponsor inspection"
+        ],
+        "Policy": [
+          "policy:milestone_release_v1 checks evidence completeness, blockers, confidence, and trust",
+          "policy:agent_spend_guard_v1 separates work verification from spend governance"
+        ]
+      }
+    },
+    {
+      "scenarioId": "spend-breach",
+      "label": "Spend breach",
+      "badgeTone": "critical",
+      "description": "The work looks verified, but agent spend exceeded the delegated cap. The kernel separates verification from cost governance.",
+      "firstPayer": "Sponsors funding agent-assisted work where API, model, and tool spend can run ahead of human judgment.",
+      "claim": {
+        "id": "mk_spend_001",
+        "project": "Protocol Foundation Grant 09",
+        "sponsorType": "protocol_foundation",
+        "milestoneId": "api_integration_v1",
+        "requestedTrancheUsd": 750,
+        "materialityUsd": 750,
+        "submittedBy": "builder_team_gamma",
+        "submittedAt": "2026-04-27T15:00:00.000Z",
+        "evidence": [
+          {
+            "id": "integration_summary",
+            "type": "artifact",
+            "required": true,
+            "present": true,
+            "description": "integration summary is present",
+            "provenanceRef": "artifact:integration-summary.md lines 1-35"
+          },
+          {
+            "id": "commit_range",
+            "type": "commit",
+            "required": true,
+            "present": true,
+            "description": "implementation commits are linked",
+            "provenanceRef": "git:4f83c21..91ab604"
+          },
+          {
+            "id": "test_log",
+            "type": "test_log",
+            "required": true,
+            "present": true,
+            "description": "integration tests pass",
+            "provenanceRef": "ci:api-integration-run-221"
+          },
+          {
+            "id": "deployment_url",
+            "type": "deployment_url",
+            "required": true,
+            "present": true,
+            "description": "staging endpoint is live",
+            "provenanceRef": "deploy:api-integration-staging"
+          },
+          {
+            "id": "spend_ledger",
+            "type": "spend_ledger",
+            "required": true,
+            "present": true,
+            "description": "agent spend ledger is attached",
+            "provenanceRef": "ledger:agent-spend-2026-04-27"
+          }
+        ],
+        "workflow": {
+          "completedItems": 12,
+          "totalItems": 12,
+          "blockingIssues": 0
+        },
+        "spend": {
+          "agentSpendUsd": 232.4,
+          "agentSpendCapUsd": 150,
+          "budgetRemainingUsd": 980
+        }
+      },
+      "signal": {
+        "caseId": "mk_spend_001",
+        "milestoneId": "api_integration_v1",
+        "artifactsPresent": 5,
+        "artifactsRequired": 5,
+        "requiredEvidenceMissing": [],
+        "testLogsPresent": true,
+        "deploymentUrlPresent": true,
+        "checklistCompletion": 1,
+        "blockingIssues": 0,
+        "agentSpendUsd": 232.4,
+        "agentSpendCapUsd": 150,
+        "budgetRemainingUsd": 980,
+        "requestedTrancheUsd": 750,
+        "materialityUsd": 750,
+        "confidence": 0.97,
+        "provenanceRefs": [
+          "artifact:integration-summary.md lines 1-35",
+          "git:4f83c21..91ab604",
+          "ci:api-integration-run-221",
+          "deploy:api-integration-staging",
+          "ledger:agent-spend-2026-04-27"
+        ]
+      },
+      "budgetEvaluation": {
+        "result": "over_cap",
+        "agentSpendUsd": 232.4,
+        "agentSpendCapUsd": 150,
+        "spendOverCapUsd": 82.4,
+        "budgetRemainingUsd": 980,
+        "requestedTrancheUsd": 750,
+        "budgetShortfallUsd": 0,
+        "reasons": [
+          "agent_spend_over_cap"
+        ]
+      },
+      "policyEvaluation": {
+        "policyVersion": "milestone_release_v1",
+        "result": "escalate",
+        "workVerificationResult": "verified",
+        "spendGovernanceResult": "breach",
+        "reasons": [
+          "agent_spend_over_cap"
+        ],
+        "releaseAmountUsd": 0,
+        "confidence": 0.97,
+        "policyTrustUsed": 0.8
+      },
+      "routingDecision": {
+        "route": "budget_guardian_agent",
+        "authorityMode": "bounded_agent",
+        "eligibleDecisionMakers": [
+          "budget_guardian_agent",
+          "project_operator_human"
+        ],
+        "reasons": [
+          "agent_spend_over_cap",
+          "low_materiality_spend_breach_inside_agent_review_authority"
+        ]
+      },
+      "loggedDecision": {
+        "decision": "verify_work_hold_spend_review",
+        "approvedNextTrancheUsd": 0,
+        "decidedBy": "budget_guardian_agent",
+        "rationale": "Milestone evidence is sufficient, but agent spend exceeded the delegated cap.",
+        "conditions": [
+          "verify work separately from spend breach",
+          "tighten agent spend cap before continuation"
+        ],
+        "policyVersion": "milestone_release_v1"
+      },
+      "outcome": {
+        "caseId": "mk_spend_001",
+        "accepted": true,
+        "reversed": false,
+        "remediationCostUsd": 0,
+        "downstreamQualityScore": 0.9,
+        "stayedWithinAdjustedSpendCap": false,
+        "severity": "moderate",
+        "evidenceIssue": "none",
+        "responsibilityScopes": [
+          "agent_budget_discipline"
+        ],
+        "comparableFailureCount": 3,
+        "selfEscalated": false,
+        "externalDependencyFailure": false,
+        "notes": "The integration worked, but the agent did not stay inside the delegated spend boundary."
+      },
+      "scoreUpdate": {
+        "before": {
+          "policyAutoClear": {
+            "mean": 0.8,
+            "evidenceStrength": 44,
+            "band": "normal"
+          },
+          "reviewerMaterialReview": {
+            "mean": 0.71,
+            "evidenceStrength": 35,
+            "band": "normal"
+          },
+          "agentBudgetDiscipline": {
+            "mean": 0.78,
+            "evidenceStrength": 18,
+            "band": "normal"
+          }
+        },
+        "after": {
+          "policyAutoClear": {
+            "mean": 0.8,
+            "evidenceStrength": 44,
+            "band": "normal"
+          },
+          "reviewerMaterialReview": {
+            "mean": 0.71,
+            "evidenceStrength": 35,
+            "band": "normal"
+          },
+          "agentBudgetDiscipline": {
+            "mean": 0.727,
+            "evidenceStrength": 20,
+            "band": "supervised"
+          }
+        },
+        "delta": {
+          "policyAutoClear": 0,
+          "reviewerMaterialReview": 0,
+          "agentBudgetDiscipline": -0.053
+        },
+        "assessment": {
+          "severity": "moderate",
+          "outcomeQuality": 0.9,
+          "eventWeight": 2,
+          "redLineEvent": false,
+          "affectedScopes": [
+            "agent_budget_discipline"
+          ],
+          "authoritySignal": "spend_cap_adjustment",
+          "rationale": "Repeated spend discipline failures should reduce autonomous spend authority, not all authority."
+        },
+        "authorityEvaluation": {
+          "before": {
+            "policyAutoClear": {
+              "mean": 0.8,
+              "evidenceStrength": 44,
+              "band": "normal"
+            },
+            "reviewerMaterialReview": {
+              "mean": 0.71,
+              "evidenceStrength": 35,
+              "band": "normal"
+            },
+            "agentBudgetDiscipline": {
+              "mean": 0.78,
+              "evidenceStrength": 18,
+              "band": "normal"
+            }
+          },
+          "after": {
+            "policyAutoClear": {
+              "mean": 0.8,
+              "evidenceStrength": 44,
+              "band": "normal"
+            },
+            "reviewerMaterialReview": {
+              "mean": 0.71,
+              "evidenceStrength": 35,
+              "band": "normal"
+            },
+            "agentBudgetDiscipline": {
+              "mean": 0.727,
+              "evidenceStrength": 20,
+              "band": "supervised"
+            }
+          },
+          "decisions": [
+            {
+              "action": "SPEND_CAP_ADJUSTMENT",
+              "scope": "agent_budget_discipline",
+              "reason": "Repeated spend overruns reduce autonomous spend authority while preserving verification scope.",
+              "evidence": [
+                "case:mk_spend_001",
+                "severity:moderate",
+                "event_weight:2",
+                "comparable_failures:3"
+              ],
+              "requiresHumanApproval": false
+            }
+          ],
+          "policyRevisionCandidates": [],
+          "summary": "SPEND_CAP_ADJUSTMENT:agent_budget_discipline"
+        },
+        "interpretation": "Repeated spend discipline failures should reduce autonomous spend authority, not all authority. SPEND_CAP_ADJUSTMENT:agent_budget_discipline"
+      },
+      "futureRouting": {
+        "before": {
+          "policyResult": "escalate",
+          "route": "budget_guardian_agent",
+          "reasons": [
+            "agent_spend_over_cap"
+          ]
+        },
+        "after": {
+          "policyResult": "escalate",
+          "route": "project_operator_human",
+          "reasons": [
+            "agent_spend_over_cap"
+          ]
+        },
+        "authorityBefore": {
+          "policyAutoClearTrust": 0.8,
+          "reviewerMaterialReviewTrust": 0.71,
+          "agentBudgetDisciplineTrust": 0.78,
+          "policyAutoClearBand": "normal",
+          "reviewerMaterialReviewBand": "normal",
+          "agentBudgetDisciplineBand": "normal",
+          "policyAutoClearEligible": true,
+          "materialExceptionReviewer": "project_operator_human",
+          "spendBreachReviewer": "budget_guardian_agent",
+          "summary": "policy auto-clear eligible (normal); material exceptions route to project_operator_human (normal); spend breaches route to budget_guardian_agent (normal)"
+        },
+        "authorityAfter": {
+          "policyAutoClearTrust": 0.8,
+          "reviewerMaterialReviewTrust": 0.71,
+          "agentBudgetDisciplineTrust": 0.727,
+          "policyAutoClearBand": "normal",
+          "reviewerMaterialReviewBand": "normal",
+          "agentBudgetDisciplineBand": "supervised",
+          "policyAutoClearEligible": true,
+          "materialExceptionReviewer": "project_operator_human",
+          "spendBreachReviewer": "project_operator_human",
+          "summary": "policy auto-clear eligible (normal); material exceptions route to project_operator_human (normal); spend breaches route to project_operator_human (supervised)"
+        },
+        "authorityChanges": [
+          "Spend breach routing changed from budget_guardian_agent to project_operator_human."
+        ],
+        "changed": true,
+        "summary": "Future routing changed from escalate/budget_guardian_agent to escalate/project_operator_human."
+      },
+      "provenance": {
+        "Source spans": [
+          "artifact:integration-summary.md lines 1-35 confirms integration summary is present",
+          "git:4f83c21..91ab604 confirms implementation commits are linked",
+          "ci:api-integration-run-221 confirms integration tests pass",
+          "deploy:api-integration-staging confirms staging endpoint is live",
+          "ledger:agent-spend-2026-04-27 confirms agent spend ledger is attached"
+        ],
+        "Missing evidence": [
+          "No required evidence missing"
+        ],
+        "Policy": [
+          "policy:milestone_release_v1 checks evidence completeness, blockers, confidence, and trust",
+          "policy:agent_spend_guard_v1 separates work verification from spend governance"
+        ]
+      }
+    },
+    {
+      "scenarioId": "bad-autoclear",
+      "label": "Bad auto-clear",
+      "badgeTone": "critical",
+      "description": "A case looked clean enough to auto-clear, but the later outcome failed. Retrospective scoring changes future routing.",
+      "firstPayer": "Sponsors who need the verification layer to learn from bad approvals rather than treat policies as permanently reliable.",
+      "claim": {
+        "id": "mk_bad_auto_001",
+        "project": "Protocol Foundation Grant 10",
+        "sponsorType": "protocol_foundation",
+        "milestoneId": "api_integration_v1",
+        "requestedTrancheUsd": 750,
+        "materialityUsd": 750,
+        "submittedBy": "builder_team_delta",
+        "submittedAt": "2026-04-29T16:00:00.000Z",
+        "evidence": [
+          {
+            "id": "integration_summary",
+            "type": "artifact",
+            "required": true,
+            "present": true,
+            "description": "integration summary is present",
+            "provenanceRef": "artifact:integration-summary.md lines 1-41"
+          },
+          {
+            "id": "commit_range",
+            "type": "commit",
+            "required": true,
+            "present": true,
+            "description": "implementation commits are linked",
+            "provenanceRef": "git:22dd919..84bd5ac"
+          },
+          {
+            "id": "test_log",
+            "type": "test_log",
+            "required": true,
+            "present": true,
+            "description": "test log reports passing checks",
+            "provenanceRef": "ci:api-integration-run-238"
+          },
+          {
+            "id": "deployment_url",
+            "type": "deployment_url",
+            "required": true,
+            "present": true,
+            "description": "staging endpoint is live",
+            "provenanceRef": "deploy:api-integration-staging"
+          },
+          {
+            "id": "spend_ledger",
+            "type": "spend_ledger",
+            "required": true,
+            "present": true,
+            "description": "agent spend ledger is attached",
+            "provenanceRef": "ledger:agent-spend-2026-04-29"
+          }
+        ],
+        "workflow": {
+          "completedItems": 12,
+          "totalItems": 12,
+          "blockingIssues": 0
+        },
+        "spend": {
+          "agentSpendUsd": 121.3,
+          "agentSpendCapUsd": 150,
+          "budgetRemainingUsd": 980
+        }
+      },
+      "signal": {
+        "caseId": "mk_bad_auto_001",
+        "milestoneId": "api_integration_v1",
+        "artifactsPresent": 5,
+        "artifactsRequired": 5,
+        "requiredEvidenceMissing": [],
+        "testLogsPresent": true,
+        "deploymentUrlPresent": true,
+        "checklistCompletion": 1,
+        "blockingIssues": 0,
+        "agentSpendUsd": 121.3,
+        "agentSpendCapUsd": 150,
+        "budgetRemainingUsd": 980,
+        "requestedTrancheUsd": 750,
+        "materialityUsd": 750,
+        "confidence": 0.98,
+        "provenanceRefs": [
+          "artifact:integration-summary.md lines 1-41",
+          "git:22dd919..84bd5ac",
+          "ci:api-integration-run-238",
+          "deploy:api-integration-staging",
+          "ledger:agent-spend-2026-04-29"
+        ]
+      },
+      "budgetEvaluation": {
+        "result": "within_cap",
+        "agentSpendUsd": 121.3,
+        "agentSpendCapUsd": 150,
+        "spendOverCapUsd": 0,
+        "budgetRemainingUsd": 980,
+        "requestedTrancheUsd": 750,
+        "budgetShortfallUsd": 0,
+        "reasons": []
+      },
+      "policyEvaluation": {
+        "policyVersion": "milestone_release_v1",
+        "result": "auto_clear",
+        "workVerificationResult": "verified",
+        "spendGovernanceResult": "within_cap",
+        "reasons": [],
+        "releaseAmountUsd": 750,
+        "confidence": 0.98,
+        "policyTrustUsed": 0.78
+      },
+      "routingDecision": {
+        "route": "no_review",
+        "authorityMode": "automatic",
+        "eligibleDecisionMakers": [
+          "decision_kernel"
+        ],
+        "reasons": []
+      },
+      "loggedDecision": {
+        "decision": "auto_release",
+        "approvedNextTrancheUsd": 750,
+        "decidedBy": "decision_kernel",
+        "rationale": "Evidence is complete, spend is inside policy, and trust is high enough for automatic release.",
+        "conditions": [],
+        "policyVersion": "milestone_release_v1"
+      },
+      "outcome": {
+        "caseId": "mk_bad_auto_001",
+        "accepted": false,
+        "reversed": true,
+        "remediationCostUsd": 450,
+        "downstreamQualityScore": 0.35,
+        "stayedWithinAdjustedSpendCap": true,
+        "severity": "moderate",
+        "evidenceIssue": "none",
+        "responsibilityScopes": [
+          "policy_auto_clear"
+        ],
+        "comparableFailureCount": 3,
+        "selfEscalated": false,
+        "externalDependencyFailure": false,
+        "notes": "The endpoint failed after release. The sponsor reversed acceptance and paid remediation costs."
+      },
+      "scoreUpdate": {
+        "before": {
+          "policyAutoClear": {
+            "mean": 0.78,
+            "evidenceStrength": 36,
+            "band": "normal"
+          },
+          "reviewerMaterialReview": {
+            "mean": 0.7,
+            "evidenceStrength": 34,
+            "band": "normal"
+          },
+          "agentBudgetDiscipline": {
+            "mean": 0.76,
+            "evidenceStrength": 22,
+            "band": "normal"
+          }
+        },
+        "after": {
+          "policyAutoClear": {
+            "mean": 0.724,
+            "evidenceStrength": 39,
+            "band": "supervised"
+          },
+          "reviewerMaterialReview": {
+            "mean": 0.7,
+            "evidenceStrength": 34,
+            "band": "normal"
+          },
+          "agentBudgetDiscipline": {
+            "mean": 0.76,
+            "evidenceStrength": 22,
+            "band": "normal"
+          }
+        },
+        "delta": {
+          "policyAutoClear": -0.056,
+          "reviewerMaterialReview": 0,
+          "agentBudgetDiscipline": 0
+        },
+        "assessment": {
+          "severity": "moderate",
+          "outcomeQuality": 0.35,
+          "eventWeight": 3,
+          "redLineEvent": false,
+          "affectedScopes": [
+            "policy_auto_clear"
+          ],
+          "authoritySignal": "policy_revision_candidate",
+          "rationale": "Repeated bad auto-clears indicate the policy is under-specified for this case class."
+        },
+        "authorityEvaluation": {
+          "before": {
+            "policyAutoClear": {
+              "mean": 0.78,
+              "evidenceStrength": 36,
+              "band": "normal"
+            },
+            "reviewerMaterialReview": {
+              "mean": 0.7,
+              "evidenceStrength": 34,
+              "band": "normal"
+            },
+            "agentBudgetDiscipline": {
+              "mean": 0.76,
+              "evidenceStrength": 22,
+              "band": "normal"
+            }
+          },
+          "after": {
+            "policyAutoClear": {
+              "mean": 0.724,
+              "evidenceStrength": 39,
+              "band": "supervised"
+            },
+            "reviewerMaterialReview": {
+              "mean": 0.7,
+              "evidenceStrength": 34,
+              "band": "normal"
+            },
+            "agentBudgetDiscipline": {
+              "mean": 0.76,
+              "evidenceStrength": 22,
+              "band": "normal"
+            }
+          },
+          "decisions": [
+            {
+              "action": "CO_SIGN_REQUIRED",
+              "scope": "policy_auto_clear",
+              "reason": "Repeated failed auto-clears disable unsupervised auto-clear for this case class.",
+              "evidence": [
+                "case:mk_bad_auto_001",
+                "severity:moderate",
+                "event_weight:3",
+                "comparable_failures:3"
+              ],
+              "requiresHumanApproval": true
+            }
+          ],
+          "policyRevisionCandidates": [
+            {
+              "policyId": "api_milestone_auto_clear",
+              "policyVersion": "milestone_release_v1",
+              "failurePattern": "3 comparable auto-cleared cases failed after release.",
+              "affectedCaseClass": "api_integration_milestones",
+              "supportingOutcomes": [
+                "mk_bad_auto_001"
+              ],
+              "suggestedRevision": "Require post-deploy uptime evidence before API milestone auto-clear.",
+              "interimGuardrail": "Route comparable API milestones to supervised review until policy revision is approved.",
+              "requiresHumanApproval": true
+            }
+          ],
+          "summary": "CO_SIGN_REQUIRED:policy_auto_clear"
+        },
+        "interpretation": "Repeated bad auto-clears indicate the policy is under-specified for this case class. CO_SIGN_REQUIRED:policy_auto_clear"
+      },
+      "futureRouting": {
+        "before": {
+          "policyResult": "auto_clear",
+          "route": "no_review",
+          "reasons": []
+        },
+        "after": {
+          "policyResult": "escalate",
+          "route": "project_operator_human",
+          "reasons": [
+            "policy_trust_below_autoclear_threshold"
+          ]
+        },
+        "authorityBefore": {
+          "policyAutoClearTrust": 0.78,
+          "reviewerMaterialReviewTrust": 0.7,
+          "agentBudgetDisciplineTrust": 0.76,
+          "policyAutoClearBand": "normal",
+          "reviewerMaterialReviewBand": "normal",
+          "agentBudgetDisciplineBand": "normal",
+          "policyAutoClearEligible": true,
+          "materialExceptionReviewer": "project_operator_human",
+          "spendBreachReviewer": "budget_guardian_agent",
+          "summary": "policy auto-clear eligible (normal); material exceptions route to project_operator_human (normal); spend breaches route to budget_guardian_agent (normal)"
+        },
+        "authorityAfter": {
+          "policyAutoClearTrust": 0.724,
+          "reviewerMaterialReviewTrust": 0.7,
+          "agentBudgetDisciplineTrust": 0.76,
+          "policyAutoClearBand": "supervised",
+          "reviewerMaterialReviewBand": "normal",
+          "agentBudgetDisciplineBand": "normal",
+          "policyAutoClearEligible": false,
+          "materialExceptionReviewer": "project_operator_human",
+          "spendBreachReviewer": "budget_guardian_agent",
+          "summary": "policy auto-clear requires review (supervised); material exceptions route to project_operator_human (normal); spend breaches route to budget_guardian_agent (normal)"
+        },
+        "authorityChanges": [
+          "Policy auto-clear gate changed from eligible to review required."
+        ],
+        "changed": true,
+        "summary": "Future routing changed from auto_clear/no_review to escalate/project_operator_human."
+      },
+      "provenance": {
+        "Source spans": [
+          "artifact:integration-summary.md lines 1-41 confirms integration summary is present",
+          "git:22dd919..84bd5ac confirms implementation commits are linked",
+          "ci:api-integration-run-238 confirms test log reports passing checks",
+          "deploy:api-integration-staging confirms staging endpoint is live",
+          "ledger:agent-spend-2026-04-29 confirms agent spend ledger is attached"
+        ],
+        "Missing evidence": [
+          "No required evidence missing"
+        ],
+        "Policy": [
+          "policy:milestone_release_v1 checks evidence completeness, blockers, confidence, and trust",
+          "policy:agent_spend_guard_v1 separates work verification from spend governance"
+        ]
+      }
+    }
+  ]
+}

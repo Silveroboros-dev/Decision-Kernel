@@ -12,7 +12,7 @@ This repository was created in response to the Outlier Ventures Conviction Marke
 
 ## Submission Snapshot
 
-- Current state: docs-first pivot package built from Governance OS primitives, with a concrete walkthrough and linked proof artifacts from the predecessor repo
+- Current state: runnable TypeScript simulation kernel with Zod schemas, fixtures, focused tests, CLI demo, and a prototype UI backed by generated trace JSON
 - Best-fit problems: 04 Verification without managers, 07 Cost governance for agents, with 05 Coordination without companies as the extension
 - Biggest blocker: the main blocker is access to live sponsor milestone workflows and spend data to calibrate policy thresholds and retrospective scoring beyond synthetic traces
 - What we want from Outlier Ventures: sharp feedback on wedge and business model, plus access to builders, operators, or funders already hitting these coordination problems
@@ -77,28 +77,40 @@ The shortest way to understand the product is the first target case:
 
 Read the full example in [docs/demo-walkthrough.md](docs/demo-walkthrough.md).
 
-## MVP
+## Runnable MVP
 
-There is now a minimal prototype in [prototype/index.html](prototype/index.html).
+There is now a minimal TypeScript kernel plus a prototype trace viewer.
 
-It demonstrates both halves of the kernel:
+The kernel demonstrates both halves of the loop:
 
-1. an exception path where incomplete evidence and spend overrun escalate the case
-2. an auto-clear path where routine work releases the milestone tranche automatically
-3. provenance for the signal extraction and policy decision
-4. retrospective rescoring after the outcome arrives
+1. routine auto-clear when evidence is complete and spend is inside policy
+2. missing-evidence escalation to a human operator
+3. spend breach handling that separates work verification from cost governance
+4. repeated bad auto-clear creating a policy revision candidate and supervised routing
+5. scoped trust updates that do not automatically change authority
 
-To run it locally:
+To run the kernel:
 
 ```bash
-python3 -m http.server 4175 -d prototype
+npm ci --ignore-scripts
+npm run verify
+npm run demo
 ```
 
-Then open `http://localhost:4175`.
+To open the prototype trace viewer:
+
+```bash
+npm run generate:traces
+npm run prototype
+```
+
+Then open `http://localhost:4175`. The UI reads `prototype/traces/generated-demo-trace.json`; it is no longer the source of the scenario logic.
+
+Security note: this repo pins npm to `ignore-scripts=true` in `.npmrc`, and the prototype server binds to `127.0.0.1` instead of all network interfaces.
 
 ## What Is Real Today
 
-- Real today: a local interactive prototype with two scenarios, visible policy states, provenance panels, and outcome rescoring
+- Real today: strict Zod schemas, a runnable kernel, four fixture scenarios, generated trace output, scoped trust updates, authority-change decisions, policy revision candidates, and tests for policy evaluation, exception routing, and retrospective scoring
 - Simulated today: milestone evidence, spend events, routing, and rescoring are driven by synthetic traces rather than live sponsor workflow data
 - Not yet done: public hosted demo link and production data integration
 
@@ -163,8 +175,10 @@ If that loop works, high-performing policies become reusable coordination assets
 If you only read three things, read these in order:
 
 1. this README
-2. [docs/system-model.md](docs/system-model.md)
-3. [docs/demo-walkthrough.md](docs/demo-walkthrough.md)
+2. `npm run demo`
+3. `npm test`
+4. [docs/system-model.md](docs/system-model.md)
+5. [docs/demo-walkthrough.md](docs/demo-walkthrough.md)
 
 ## Repo shape
 
@@ -174,6 +188,12 @@ If you only read three things, read these in order:
 - `docs/thesis.md`: the conceptual argument
 - `docs/system-model.md`: entities, flows, authority, and scoring logic
 - `docs/mvp-roadmap.md`: what to build first
+- `src/schemas/`: Zod boundary schemas for cases, signal, policy, budget, routing, decisions, outcomes, and traces
+- `src/kernel/`: executable extraction, policy evaluation, budget checks, routing, decision logging, and retrospective scoring
+- `src/demo/`: CLI demo and prototype trace generator
+- `fixtures/`: four synthetic milestone verification scenarios
+- `tests/`: focused kernel tests for policy evaluation, exception routing, and retrospective scoring
+- `prototype/`: static trace viewer backed by generated kernel output
 
 ## Working name
 

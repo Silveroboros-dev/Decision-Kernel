@@ -1,0 +1,98 @@
+{
+  "scenarioId": "bad-autoclear",
+  "label": "Bad auto-clear",
+  "badgeTone": "critical",
+  "description": "A case looked clean enough to auto-clear, but the later outcome failed. Retrospective scoring changes future routing.",
+  "firstPayer": "Sponsors who need the verification layer to learn from bad approvals rather than treat policies as permanently reliable.",
+  "claim": {
+    "id": "mk_bad_auto_001",
+    "project": "Protocol Foundation Grant 10",
+    "sponsorType": "protocol_foundation",
+    "milestoneId": "api_integration_v1",
+    "requestedTrancheUsd": 750,
+    "materialityUsd": 750,
+    "submittedBy": "builder_team_delta",
+    "submittedAt": "2026-04-29T16:00:00.000Z",
+    "evidence": [
+      {
+        "id": "integration_summary",
+        "type": "artifact",
+        "required": true,
+        "present": true,
+        "description": "integration summary is present",
+        "provenanceRef": "artifact:integration-summary.md lines 1-41"
+      },
+      {
+        "id": "commit_range",
+        "type": "commit",
+        "required": true,
+        "present": true,
+        "description": "implementation commits are linked",
+        "provenanceRef": "git:22dd919..84bd5ac"
+      },
+      {
+        "id": "test_log",
+        "type": "test_log",
+        "required": true,
+        "present": true,
+        "description": "test log reports passing checks",
+        "provenanceRef": "ci:api-integration-run-238"
+      },
+      {
+        "id": "deployment_url",
+        "type": "deployment_url",
+        "required": true,
+        "present": true,
+        "description": "staging endpoint is live",
+        "provenanceRef": "deploy:api-integration-staging"
+      },
+      {
+        "id": "spend_ledger",
+        "type": "spend_ledger",
+        "required": true,
+        "present": true,
+        "description": "agent spend ledger is attached",
+        "provenanceRef": "ledger:agent-spend-2026-04-29"
+      }
+    ],
+    "workflow": {
+      "completedItems": 12,
+      "totalItems": 12,
+      "blockingIssues": 0
+    },
+    "spend": {
+      "agentSpendUsd": 121.3,
+      "agentSpendCapUsd": 150,
+      "budgetRemainingUsd": 980
+    }
+  },
+  "trustState": {
+    "policyAutoClear": {
+      "mean": 0.78,
+      "evidenceStrength": 36,
+      "band": "normal"
+    },
+    "reviewerMaterialReview": {
+      "mean": 0.7,
+      "evidenceStrength": 34,
+      "band": "normal"
+    },
+    "agentBudgetDiscipline": {
+      "mean": 0.76,
+      "evidenceStrength": 22,
+      "band": "normal"
+    }
+  },
+  "outcome": {
+    "caseId": "mk_bad_auto_001",
+    "accepted": false,
+    "reversed": true,
+    "remediationCostUsd": 450,
+    "downstreamQualityScore": 0.35,
+    "stayedWithinAdjustedSpendCap": true,
+    "severity": "moderate",
+    "responsibilityScopes": ["policy_auto_clear"],
+    "comparableFailureCount": 3,
+    "notes": "The endpoint failed after release. The sponsor reversed acceptance and paid remediation costs."
+  }
+}

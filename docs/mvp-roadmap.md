@@ -51,6 +51,16 @@ Deliverables:
 
 The goal is not production readiness. It is to make the kernel legible and testable.
 
+Current implementation:
+- TypeScript and Zod schemas are in `src/schemas/`
+- the executable kernel is in `src/kernel/`
+- four milestone verification fixtures are in `fixtures/`
+- the CLI demo runs with `npm run demo`
+- focused tests cover policy evaluation, exception routing, and retrospective scoring
+- the prototype reads generated kernel traces from `prototype/traces/generated-demo-trace.json`
+- retrospective scoring now separates scoped trust updates from authority changes
+- the authority controller can return no change, spend-cap adjustment, co-sign requirement, one-band downgrade, immediate restriction, or policy revision candidate
+
 ## v2: Interactive prototype
 
 Deliverables:
@@ -58,6 +68,10 @@ Deliverables:
 - audit log and provenance view
 - scorecards for policies and decision-makers
 - editable policy rules and authority limits
+
+Current implementation:
+- the existing prototype now acts as a trace viewer
+- policy editing and authority-limit editing are not implemented yet
 
 ## v3: Trust and coordination extension
 

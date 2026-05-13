@@ -7,299 +7,208 @@ const auditNote = document.getElementById("audit-note");
 const whoFor = document.getElementById("who-for");
 const provenanceContent = document.getElementById("provenance-content");
 const scenarioBadge = document.getElementById("scenario-badge");
-const scenarioButtons = Array.from(document.querySelectorAll(".scenario-button"));
-
-const scenarios = {
-  escalation: {
-    badgeText: "Escalation path",
-    badgeClass: "badge badge-warn",
-    claim: {
-      project: "Protocol Foundation Grant 07",
-      request: "Release next $1,500 milestone tranche",
-      milestone: "Research Packet v1 complete",
-      inputs: "Artifacts, checklist, spend ledger, workflow state",
-    },
-    firstPayer:
-      "First payer: protocol foundations running milestone-based grant programs for hybrid human-agent contributor teams. First user: the program operator deciding whether verified work is good enough to release the next tranche.",
-    capitalBefore:
-      "Before the decision, no capital moves. The claim is held until the exception is reviewed.",
-    capitalAfter:
-      "Capital remains frozen until review. After the bounded approval, only $500 moves, not the full $1,500 request.",
-    capitalStep: 5,
-    auditBefore:
-      "No recommendation is hidden. The escalation reason, bounded decision, and later outcome are all explicit and reviewable.",
-    auditAfter:
-      "The later outcome does not disappear into a postmortem. It updates policy quality, decision-maker quality, and future delegation.",
-    auditStep: 6,
-    provenance: {
-      "Source spans": [
-        "artifact:packet-v1-summary.md lines 18-44 confirm 8 of 10 required sections are present",
-        "artifact:blockers.md lines 6-10 show one unresolved blocker on validation coverage",
-      ],
-      Events: [
-        "workflow:task-run-447 recorded 92% checklist completion",
-        "ledger:agent-spend-2026-04-21 recorded $182.40 against a $150 cap",
-      ],
-      Policy: [
-        "policy:milestone_release_v1 requires complete artifacts before auto-clear",
-        "policy:agent_spend_guard_v1 escalates spend above delegated run cap",
-      ],
-    },
-    steps: [
-      {
-        title: "Claim submitted",
-        content: `<p>The contributor asks the sponsor to release the next budget tranche and claims the milestone is complete.</p>
-<pre><code>{
-  "case_id": "mk_001",
-  "requested_tranche_usd": 1500,
-  "milestone_id": "research_packet_v1",
-  "sponsor_type": "protocol_foundation"
-}</code></pre>`,
-      },
-      {
-        title: "Signal extracted",
-        content: `<p>Messy inputs are compressed into decision-relevant state with provenance.</p>
-<pre><code>{
-  "artifacts_present": 8,
-  "artifacts_required": 10,
-  "checklist_completion": 0.92,
-  "blocking_issues": 1,
-  "agent_spend_usd": 182.4,
-  "agent_spend_cap_usd": 150,
-  "budget_remaining_usd": 1640,
-  "confidence": 0.81
-}</code></pre>`,
-      },
-      {
-        title: "Policy and budget evaluated",
-        content: `<p>The kernel checks evidence completeness, blocking issues, spend cap, and remaining budget.</p>
-<div class="status-row">
-  <span class="status-pill status-amber">Policy result: escalate</span>
-  <span class="status-pill status-red">Spend over cap: +$32.40</span>
-</div>
-<pre><code>{
-  "reasons": [
-    "missing_required_artifacts",
-    "blocking_issue_open",
-    "agent_spend_over_cap"
-  ],
-  "eligible_decision_makers": [
-    "project_operator_human",
-    "budget_guardian_agent"
-  ]
-}</code></pre>`,
-      },
-      {
-        title: "Exception routed",
-        content: `<p>The case is too material to auto-clear, so Decision Kernel opens a review exception.</p>
-<div class="exception-box">
-  <div>
-    <p class="exception-label">Exception</p>
-    <strong>Milestone and spend review</strong>
-  </div>
-  <span class="badge badge-critical">High severity</span>
-</div>
-<ul class="plain-list">
-  <li>2 required artifacts are missing</li>
-  <li>1 blocking issue remains open</li>
-  <li>Agent spend is above the delegated cap</li>
-</ul>`,
-      },
-      {
-        title: "Bounded decision logged",
-        content: `<p>The reviewer approves limited continuation rather than the full release.</p>
-<pre><code>{
-  "decision": "approve_limited_continuation",
-  "approved_next_tranche_usd": 500,
-  "conditions": [
-    "missing artifacts due within 24 hours",
-    "agent spend cap tightened to 100 USD per run",
-    "blocking issue must close before full release"
-  ]
-}</code></pre>`,
-      },
-      {
-        title: "Outcome rescored",
-        content: `<p>After the missing evidence is delivered and spend stays inside the tighter cap, the system updates trust.</p>
-<div class="score-grid">
-  <div>
-    <span>Policy score</span>
-    <strong>+0.04</strong>
-  </div>
-  <div>
-    <span>Decision-maker score</span>
-    <strong>+0.07</strong>
-  </div>
-  <div>
-    <span>Agent trust</span>
-    <strong>+0.03</strong>
-  </div>
-</div>`,
-      },
-    ],
-  },
-  autoclear: {
-    badgeText: "Auto-clear path",
-    badgeClass: "badge badge-ok",
-    claim: {
-      project: "Protocol Foundation Grant 08",
-      request: "Release next $1,500 milestone tranche",
-      milestone: "Research Packet v1 complete",
-      inputs: "Artifacts, checklist, spend ledger, workflow state",
-    },
-    firstPayer:
-      "First payer: protocol foundations running milestone-based grant programs for hybrid human-agent contributor teams. First user: the same program operator, but in this case the system clears routine releases without consuming review time.",
-    capitalBefore:
-      "Before evaluation, no capital moves. The claim is pending policy and budget checks.",
-    capitalAfter:
-      "The full $1,500 tranche moves automatically because evidence is complete and spend stays inside policy.",
-    capitalStep: 4,
-    auditBefore:
-      "Even routine approvals are still legible. The auto-clear is policy-driven and leaves a provenance trail.",
-    auditAfter:
-      "The later outcome still updates policy quality and trust, even though no manual exception review was needed.",
-    auditStep: 6,
-    provenance: {
-      "Source spans": [
-        "artifact:packet-v1-summary.md lines 14-58 confirm all 10 required sections are present",
-        "artifact:validation-report.md lines 3-22 show no open blockers",
-      ],
-      Events: [
-        "workflow:task-run-512 recorded 100% checklist completion",
-        "ledger:agent-spend-2026-04-24 recorded $118.20 against a $150 cap",
-      ],
-      Policy: [
-        "policy:milestone_release_v1 auto-clears complete evidence packages",
-        "policy:agent_spend_guard_v1 leaves routine cases inside delegated spend limits",
-      ],
-    },
-    steps: [
-      {
-        title: "Claim submitted",
-        content: `<p>The contributor asks for the next milestone tranche under the same sponsor program.</p>
-<pre><code>{
-  "case_id": "mk_002",
-  "requested_tranche_usd": 1500,
-  "milestone_id": "research_packet_v1",
-  "sponsor_type": "protocol_foundation"
-}</code></pre>`,
-      },
-      {
-        title: "Signal extracted",
-        content: `<p>The evidence bundle resolves cleanly into structured signal with no missing requirements.</p>
-<pre><code>{
-  "artifacts_present": 10,
-  "artifacts_required": 10,
-  "checklist_completion": 1.0,
-  "blocking_issues": 0,
-  "agent_spend_usd": 118.2,
-  "agent_spend_cap_usd": 150,
-  "budget_remaining_usd": 1640,
-  "confidence": 0.93
-}</code></pre>`,
-      },
-      {
-        title: "Policy and budget evaluated",
-        content: `<p>The kernel sees complete evidence, no blocker, and spend inside the delegated cap.</p>
-<div class="status-row">
-  <span class="status-pill status-amber">Policy result: auto-clear</span>
-  <span class="status-pill status-amber">Spend within cap</span>
-</div>
-<pre><code>{
-  "reasons": [],
-  "policy_result": "auto_clear",
-  "release_amount_usd": 1500
-}</code></pre>`,
-      },
-      {
-        title: "Routine case auto-clears",
-        content: `<p>No human review is consumed. The milestone tranche is released automatically because the case stayed inside policy.</p>
-<div class="exception-box">
-  <div>
-    <p class="exception-label">Outcome</p>
-    <strong>Automatic release</strong>
-  </div>
-  <span class="badge badge-ok">No exception</span>
-</div>
-<ul class="plain-list">
-  <li>All required artifacts are present</li>
-  <li>No blocker remains open</li>
-  <li>Agent spend stayed inside the delegated cap</li>
-</ul>`,
-      },
-      {
-        title: "Release logged with provenance",
-        content: `<p>The system still records the release, policy version, and evidence used.</p>
-<pre><code>{
-  "decision": "auto_release",
-  "approved_next_tranche_usd": 1500,
-  "policy_version": "milestone_release_v1",
-  "recorded_by": "decision_kernel"
-}</code></pre>`,
-      },
-      {
-        title: "Outcome rescored",
-        content: `<p>After downstream acceptance confirms the milestone was genuinely complete, the system reinforces the policy and routing choice.</p>
-<div class="score-grid">
-  <div>
-    <span>Policy score</span>
-    <strong>+0.03</strong>
-  </div>
-  <div>
-    <span>Decision-maker score</span>
-    <strong>+0.01</strong>
-  </div>
-  <div>
-    <span>Agent trust</span>
-    <strong>+0.02</strong>
-  </div>
-</div>`,
-      },
-    ],
-  },
-};
+const scenarioSwitch = document.getElementById("scenario-switch");
 
 let runTimer = null;
-let currentScenario = "escalation";
+let scenarios = [];
+let currentScenarioId = "";
 
-function populateScenario(name) {
-  const scenario = scenarios[name];
-  currentScenario = name;
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function prettyJson(value) {
+  return `<pre><code>${escapeHtml(JSON.stringify(value, null, 2))}</code></pre>`;
+}
+
+function money(value) {
+  return `$${Number(value).toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
+}
+
+function badgeClass(tone) {
+  if (tone === "ok") return "badge badge-ok";
+  if (tone === "critical") return "badge badge-critical";
+  return "badge badge-warn";
+}
+
+function statusClass(value) {
+  if (value === "auto_clear" || value === "within_cap" || value === "verified") return "status-amber";
+  if (value === "block" || value === "insufficient_budget" || value === "breach") return "status-red";
+  return "status-amber";
+}
+
+function sentenceList(items) {
+  return `<ul class="plain-list">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+}
+
+function renderClaimStep(trace) {
+  return `<p>A contributor asks the sponsor to release the next tranche and claims the milestone is complete.</p>
+${prettyJson({
+  case_id: trace.claim.id,
+  requested_tranche_usd: trace.claim.requestedTrancheUsd,
+  milestone_id: trace.claim.milestoneId,
+  sponsor_type: trace.claim.sponsorType,
+})}`;
+}
+
+function renderSignalStep(trace) {
+  return `<p>Messy evidence is compressed into typed signal the policy engine can evaluate.</p>
+${prettyJson({
+  artifacts_present: trace.signal.artifactsPresent,
+  artifacts_required: trace.signal.artifactsRequired,
+  missing_required_evidence: trace.signal.requiredEvidenceMissing,
+  checklist_completion: trace.signal.checklistCompletion,
+  blocking_issues: trace.signal.blockingIssues,
+  agent_spend_usd: trace.signal.agentSpendUsd,
+  agent_spend_cap_usd: trace.signal.agentSpendCapUsd,
+  confidence: trace.signal.confidence,
+})}`;
+}
+
+function renderPolicyStep(trace) {
+  return `<p>The kernel evaluates work evidence and spend constraints separately, then produces one routeable result.</p>
+<div class="status-row">
+  <span class="status-pill ${statusClass(trace.policyEvaluation.result)}">Policy: ${escapeHtml(trace.policyEvaluation.result)}</span>
+  <span class="status-pill ${statusClass(trace.policyEvaluation.workVerificationResult)}">Work: ${escapeHtml(trace.policyEvaluation.workVerificationResult)}</span>
+  <span class="status-pill ${statusClass(trace.policyEvaluation.spendGovernanceResult)}">Spend: ${escapeHtml(trace.policyEvaluation.spendGovernanceResult)}</span>
+</div>
+${prettyJson({
+  reasons: trace.policyEvaluation.reasons,
+  release_amount_usd: trace.policyEvaluation.releaseAmountUsd,
+  budget_result: trace.budgetEvaluation.result,
+  spend_over_cap_usd: trace.budgetEvaluation.spendOverCapUsd,
+})}`;
+}
+
+function renderRoutingStep(trace) {
+  const heading = trace.routingDecision.route === "no_review" ? "No exception" : "Exception routed";
+  return `<p>The case either clears automatically or moves to the smallest authority that can safely resolve it.</p>
+<div class="exception-box">
+  <div>
+    <p class="exception-label">Routing</p>
+    <strong>${escapeHtml(heading)}</strong>
+  </div>
+  <span class="${badgeClass(trace.badgeTone)}">${escapeHtml(trace.routingDecision.authorityMode)}</span>
+</div>
+${prettyJson(trace.routingDecision)}`;
+}
+
+function renderDecisionStep(trace) {
+  return `<p>The action is bounded, explicit, and tied back to the policy version that produced it.</p>
+${prettyJson(trace.loggedDecision)}`;
+}
+
+function renderOutcomeStep(trace) {
+  const authorityDecisions = trace.scoreUpdate.authorityEvaluation.decisions.map(
+    (decision) => `${decision.action}: ${decision.scope} - ${decision.reason}`,
+  );
+  const policyRevisionCandidates = trace.scoreUpdate.authorityEvaluation.policyRevisionCandidates.map(
+    (candidate) => `${candidate.policyVersion}: ${candidate.suggestedRevision}`,
+  );
+
+  return `<p>The later outcome updates scoped trust first. Authority changes only when the authority controller sees severe events, repeated patterns, or enough evidence.</p>
+<div class="score-grid">
+  <div>
+    <span>Policy auto-clear</span>
+    <strong>${trace.scoreUpdate.delta.policyAutoClear > 0 ? "+" : ""}${trace.scoreUpdate.delta.policyAutoClear}</strong>
+  </div>
+  <div>
+    <span>Reviewer material review</span>
+    <strong>${trace.scoreUpdate.delta.reviewerMaterialReview > 0 ? "+" : ""}${trace.scoreUpdate.delta.reviewerMaterialReview}</strong>
+  </div>
+  <div>
+    <span>Agent budget discipline</span>
+    <strong>${trace.scoreUpdate.delta.agentBudgetDiscipline > 0 ? "+" : ""}${trace.scoreUpdate.delta.agentBudgetDiscipline}</strong>
+  </div>
+</div>
+<div class="authority-grid">
+  <div>
+    <span>Before</span>
+    <strong>${escapeHtml(trace.futureRouting.authorityBefore.summary)}</strong>
+  </div>
+  <div>
+    <span>After</span>
+    <strong>${escapeHtml(trace.futureRouting.authorityAfter.summary)}</strong>
+  </div>
+</div>
+${prettyJson({
+  outcome: trace.outcome.notes,
+  outcome_assessment: trace.scoreUpdate.assessment,
+  score_interpretation: trace.scoreUpdate.interpretation,
+  authority_decisions: authorityDecisions,
+  policy_revision_candidates: policyRevisionCandidates,
+  future_routing: trace.futureRouting.summary,
+})}`;
+}
+
+const stepRenderers = [
+  ["Claim submitted", renderClaimStep],
+  ["Signal extracted", renderSignalStep],
+  ["Policy and budget evaluated", renderPolicyStep],
+  ["Decision routed", renderRoutingStep],
+  ["Bounded decision logged", renderDecisionStep],
+  ["Outcome rescored", renderOutcomeStep],
+];
+
+function activeScenario() {
+  return scenarios.find((scenario) => scenario.scenarioId === currentScenarioId) || scenarios[0];
+}
+
+function renderScenarioButtons() {
+  scenarioSwitch.innerHTML = scenarios
+    .map(
+      (scenario) =>
+        `<button class="scenario-button" data-scenario="${escapeHtml(scenario.scenarioId)}">${escapeHtml(scenario.label)}</button>`,
+    )
+    .join("");
+
+  scenarioSwitch.querySelectorAll(".scenario-button").forEach((button) => {
+    button.addEventListener("click", () => populateScenario(button.dataset.scenario));
+  });
+}
+
+function populateScenario(id) {
+  const scenario = scenarios.find((item) => item.scenarioId === id) || scenarios[0];
+  currentScenarioId = scenario.scenarioId;
 
   document.getElementById("claim-project").textContent = scenario.claim.project;
-  document.getElementById("claim-request").textContent = scenario.claim.request;
-  document.getElementById("claim-milestone").textContent = scenario.claim.milestone;
-  document.getElementById("claim-inputs").textContent = scenario.claim.inputs;
+  document.getElementById("claim-request").textContent = `Release next ${money(scenario.claim.requestedTrancheUsd)} milestone tranche`;
+  document.getElementById("claim-milestone").textContent = scenario.claim.milestoneId;
+  document.getElementById("claim-inputs").textContent = "Artifacts, checklist, spend ledger, workflow state";
   whoFor.textContent = scenario.firstPayer;
 
-  scenarioBadge.textContent = scenario.badgeText;
-  scenarioBadge.className = scenario.badgeClass;
+  scenarioBadge.textContent = scenario.label;
+  scenarioBadge.className = badgeClass(scenario.badgeTone);
 
   steps.forEach((step, index) => {
-    step.querySelector(".trace-title").textContent = scenario.steps[index].title;
-    step.querySelector(".trace-content").innerHTML = scenario.steps[index].content;
+    const [title, render] = stepRenderers[index];
+    step.querySelector(".trace-title").textContent = title;
+    step.querySelector(".trace-content").innerHTML = render(scenario);
   });
 
   provenanceContent.innerHTML = Object.entries(scenario.provenance)
     .map(
       ([label, entries]) => `<div class="provenance-group">
-  <p class="provenance-group-title">${label}</p>
-  <ul class="plain-list">
-    ${entries.map((entry) => `<li>${entry}</li>`).join("")}
-  </ul>
-</div>`
+  <p class="provenance-group-title">${escapeHtml(label)}</p>
+  ${sentenceList(entries)}
+</div>`,
     )
     .join("");
 
-  scenarioButtons.forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.scenario === name);
+  scenarioSwitch.querySelectorAll(".scenario-button").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.scenario === currentScenarioId);
   });
 
   resetDemo();
 }
 
 function openStep(stepNumber) {
-  const scenario = scenarios[currentScenario];
+  const scenario = activeScenario();
 
   steps.forEach((step) => {
     const stepId = Number(step.dataset.step);
@@ -307,17 +216,24 @@ function openStep(stepNumber) {
     step.classList.toggle("is-open", isMatch || stepId < stepNumber);
   });
 
+  const decisionAmount = scenario.loggedDecision.approvedNextTrancheUsd;
   capitalResult.textContent =
-    stepNumber >= scenario.capitalStep ? scenario.capitalAfter : scenario.capitalBefore;
-  auditNote.textContent = stepNumber >= scenario.auditStep ? scenario.auditAfter : scenario.auditBefore;
+    stepNumber >= 5
+      ? `Decision: ${scenario.loggedDecision.decision}. Approved release: ${money(decisionAmount)}.`
+      : "Before the decision, no capital moves. The claim is pending policy and budget checks.";
+  auditNote.textContent =
+    stepNumber >= 6
+      ? `${scenario.scoreUpdate.interpretation} ${scenario.futureRouting.summary}`
+      : "No recommendation is hidden. Evidence, policy version, routing, and later outcomes are explicit and reviewable.";
 }
 
 function resetDemo() {
   window.clearInterval(runTimer);
   runTimer = null;
   steps.forEach((step) => step.classList.remove("is-open"));
-  capitalResult.textContent = scenarios[currentScenario].capitalBefore;
-  auditNote.textContent = scenarios[currentScenario].auditBefore;
+  capitalResult.textContent = "Before the decision, no capital moves. The claim is pending policy and budget checks.";
+  auditNote.textContent =
+    "No recommendation is hidden. Evidence, policy version, routing, and later outcomes are explicit and reviewable.";
 }
 
 function runDemo() {
@@ -335,6 +251,24 @@ function runDemo() {
   }, 900);
 }
 
+async function loadScenarios() {
+  const response = await fetch("./traces/generated-demo-trace.json", { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`Trace load failed: ${response.status}`);
+  }
+
+  const payload = await response.json();
+  scenarios = payload.scenarios || [];
+
+  if (!scenarios.length) {
+    throw new Error("Trace payload has no scenarios.");
+  }
+
+  currentScenarioId = scenarios[0].scenarioId;
+  renderScenarioButtons();
+  populateScenario(currentScenarioId);
+}
+
 triggers.forEach((trigger) => {
   trigger.addEventListener("click", () => {
     const target = Number(trigger.dataset.target);
@@ -344,13 +278,15 @@ triggers.forEach((trigger) => {
   });
 });
 
-scenarioButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    populateScenario(button.dataset.scenario);
-  });
-});
-
 runButton.addEventListener("click", runDemo);
 resetButton.addEventListener("click", resetDemo);
 
-populateScenario(currentScenario);
+loadScenarios().catch((error) => {
+  scenarioSwitch.innerHTML = "";
+  scenarioBadge.textContent = "Trace missing";
+  scenarioBadge.className = "badge badge-critical";
+  steps[0].querySelector(".trace-content").innerHTML = `<p>${escapeHtml(error.message)}</p>`;
+  steps[0].classList.add("is-open");
+  capitalResult.textContent = "Run npm run generate:traces, then reload the prototype server.";
+  auditNote.textContent = "The UI expects generated kernel trace JSON, not hardcoded scenarios.";
+});

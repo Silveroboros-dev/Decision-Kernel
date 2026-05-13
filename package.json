@@ -1,0 +1,22 @@
+{
+  "name": "decision-kernel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo": "tsx src/demo/runMilestoneDemo.ts",
+    "generate:traces": "tsx src/demo/generatePrototypeTrace.ts",
+    "prototype": "python3 -m http.server 4175 --bind 127.0.0.1 -d prototype",
+    "test": "tsx --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "verify": "npm run typecheck && npm test && npm run demo && npm run generate:traces"
+  },
+  "dependencies": {
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "24.12.4",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "scenarioId": "routine-approval",
+  "label": "Routine approval",
+  "badgeTone": "ok",
+  "description": "Complete milestone evidence and agent spend inside policy. The kernel auto-clears the tranche.",
+  "firstPayer": "Protocol foundations running milestone-based grant programs for hybrid human-agent contributor teams.",
+  "claim": {
+    "id": "mk_routine_001",
+    "project": "Protocol Foundation Grant 08",
+    "sponsorType": "protocol_foundation",
+    "milestoneId": "research_packet_v1",
+    "requestedTrancheUsd": 1500,
+    "materialityUsd": 1500,
+    "submittedBy": "builder_team_alpha",
+    "submittedAt": "2026-04-24T10:00:00.000Z",
+    "evidence": [
+      {
+        "id": "summary_memo",
+        "type": "artifact",
+        "required": true,
+        "present": true,
+        "description": "research packet summary memo is present",
+        "provenanceRef": "artifact:packet-v1-summary.md lines 14-58"
+      },
+      {
+        "id": "source_transcripts",
+        "type": "artifact",
+        "required": true,
+        "present": true,
+        "description": "source transcript bundle is present",
+        "provenanceRef": "artifact:source-transcripts.zip manifest"
+      },
+      {
+        "id": "synthesis_table",
+        "type": "artifact",
+        "required": true,
+        "present": true,
+        "description": "synthesis table covers all requested categories",
+        "provenanceRef": "artifact:synthesis-table.csv rows 1-38"
+      },
+      {
+        "id": "validation_report",
+        "type": "test_log",
+        "required": true,
+        "present": true,
+        "description": "validation report shows no open blockers",
+        "provenanceRef": "artifact:validation-report.md lines 3-22"
+      },
+      {
+        "id": "deployment_url",
+        "type": "deployment_url",
+        "required": true,
+        "present": true,
+        "description": "review URL is live",
+        "provenanceRef": "deploy:research-packet-v1-preview"
+      },
+      {
+        "id": "spend_ledger",
+        "type": "spend_ledger",
+        "required": true,
+        "present": true,
+        "description": "agent spend ledger is attached",
+        "provenanceRef": "ledger:agent-spend-2026-04-24"
+      }
+    ],
+    "workflow": {
+      "completedItems": 10,
+      "totalItems": 10,
+      "blockingIssues": 0
+    },
+    "spend": {
+      "agentSpendUsd": 118.2,
+      "agentSpendCapUsd": 150,
+      "budgetRemainingUsd": 1640
+    }
+  },
+  "trustState": {
+    "policyAutoClear": {
+      "mean": 0.78,
+      "evidenceStrength": 42,
+      "band": "normal"
+    },
+    "reviewerMaterialReview": {
+      "mean": 0.72,
+      "evidenceStrength": 38,
+      "band": "normal"
+    },
+    "agentBudgetDiscipline": {
+      "mean": 0.74,
+      "evidenceStrength": 26,
+      "band": "supervised"
+    }
+  },
+  "outcome": {
+    "caseId": "mk_routine_001",
+    "accepted": true,
+    "reversed": false,
+    "remediationCostUsd": 0,
+    "downstreamQualityScore": 0.94,
+    "stayedWithinAdjustedSpendCap": true,
+    "severity": "normal",
+    "responsibilityScopes": ["policy_auto_clear", "agent_budget_discipline"],
+    "comparableFailureCount": 0,
+    "notes": "Milestone accepted downstream with no remediation and spend stayed under the delegated cap."
+  }
+}

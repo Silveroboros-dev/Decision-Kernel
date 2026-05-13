@@ -123,12 +123,23 @@ Without provenance, the kernel cannot justify or replay decisions.
 5. If escalated, the system selects an eligible human or agent decision-maker.
 6. Action is taken and logged with provenance.
 7. Outcome data arrives later.
-8. Policies and decision-makers are rescored.
-9. Trust, allocation authority, and compensation parameters can be adjusted.
+8. The outcome is classified by severity, responsibility scope, materiality, and evidence quality.
+9. Scoped trust is updated.
+10. An authority controller decides whether evidence is strong enough to change permissions.
+11. Policy revision candidates are created when repeated outcomes show a policy is under-specified.
 
 ## Scoring model
 
-The system should score both policies and decision-makers.
+The system should score policies and decision-makers by scope. There should not be one global reputation number.
+
+Examples:
+- policy auto-clear trust
+- reviewer material-review trust
+- agent budget-discipline trust
+- evidence-integrity trust
+- escalation-judgment trust
+
+The question is not "is this actor trusted?" The question is "trusted for what, under what materiality, with what evidence?"
 
 ### Policy quality
 Possible dimensions:
@@ -150,6 +161,8 @@ Possible dimensions:
 
 The point is not perfect objectivity. The point is disciplined retrospective learning.
 
+The retrospective scorer should not directly change authority. It produces evidence for an authority controller.
+
 ## Authority model
 
 Decision Kernel should treat authority as allocatable and revisable, not fixed forever.
@@ -162,6 +175,33 @@ Possible dimensions:
 - how trust scores affect routing priority
 
 This is the bridge from workflow software into coordination infrastructure.
+
+Authority should use discrete bands:
+- restricted
+- supervised
+- normal
+- expanded
+
+Most outcomes should update trust only. Authority changes should require:
+- a red-line event such as falsified evidence, unauthorized spend, or policy bypass
+- repeated comparable failures
+- a severe high-confidence miss
+- a pattern showing that a policy is under-specified
+
+For v1, downgrades can be automatic only for red-line events or low-stakes spend-cap restrictions. Upgrades and policy revisions should be proposed, not silently applied.
+
+### Policy revision candidates
+
+Policies should be treated as versioned hypotheses. When outcomes show repeated failure in a case class, the kernel should create a policy revision candidate rather than silently mutate the rule.
+
+Example fields:
+- policy id and version
+- failure pattern
+- affected case class
+- supporting outcomes
+- suggested revision
+- interim guardrail
+- whether human approval is required
 
 ## Economic layer
 

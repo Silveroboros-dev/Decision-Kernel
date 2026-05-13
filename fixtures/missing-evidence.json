@@ -1,0 +1,106 @@
+{
+  "scenarioId": "missing-evidence",
+  "label": "Missing evidence",
+  "badgeTone": "warn",
+  "description": "The claim says complete, but required proof is missing. The kernel routes the material exception to human review.",
+  "firstPayer": "Protocol foundations running milestone-based grant programs where operators need evidence before releasing budget.",
+  "claim": {
+    "id": "mk_missing_001",
+    "project": "Protocol Foundation Grant 07",
+    "sponsorType": "protocol_foundation",
+    "milestoneId": "research_packet_v1",
+    "requestedTrancheUsd": 1500,
+    "materialityUsd": 1500,
+    "submittedBy": "builder_team_beta",
+    "submittedAt": "2026-04-21T13:00:00.000Z",
+    "evidence": [
+      {
+        "id": "summary_memo",
+        "type": "artifact",
+        "required": true,
+        "present": true,
+        "description": "research packet summary memo is present",
+        "provenanceRef": "artifact:packet-v1-summary.md lines 18-44"
+      },
+      {
+        "id": "source_transcripts",
+        "type": "artifact",
+        "required": true,
+        "present": true,
+        "description": "source transcript bundle is present",
+        "provenanceRef": "artifact:source-transcripts.zip manifest"
+      },
+      {
+        "id": "synthesis_table",
+        "type": "artifact",
+        "required": true,
+        "present": true,
+        "description": "synthesis table is present but incomplete",
+        "provenanceRef": "artifact:synthesis-table.csv rows 1-24"
+      },
+      {
+        "id": "validation_report",
+        "type": "test_log",
+        "required": true,
+        "present": false,
+        "description": "validation report showing acceptance checks",
+        "provenanceRef": "artifact:validation-report.md"
+      },
+      {
+        "id": "deployment_url",
+        "type": "deployment_url",
+        "required": true,
+        "present": false,
+        "description": "review URL for sponsor inspection",
+        "provenanceRef": "deploy:research-packet-v1-preview"
+      },
+      {
+        "id": "spend_ledger",
+        "type": "spend_ledger",
+        "required": true,
+        "present": true,
+        "description": "agent spend ledger is attached",
+        "provenanceRef": "ledger:agent-spend-2026-04-21"
+      }
+    ],
+    "workflow": {
+      "completedItems": 8,
+      "totalItems": 10,
+      "blockingIssues": 0
+    },
+    "spend": {
+      "agentSpendUsd": 91.8,
+      "agentSpendCapUsd": 150,
+      "budgetRemainingUsd": 1640
+    }
+  },
+  "trustState": {
+    "policyAutoClear": {
+      "mean": 0.77,
+      "evidenceStrength": 40,
+      "band": "normal"
+    },
+    "reviewerMaterialReview": {
+      "mean": 0.62,
+      "evidenceStrength": 24,
+      "band": "supervised"
+    },
+    "agentBudgetDiscipline": {
+      "mean": 0.73,
+      "evidenceStrength": 24,
+      "band": "supervised"
+    }
+  },
+  "outcome": {
+    "caseId": "mk_missing_001",
+    "accepted": true,
+    "reversed": false,
+    "remediationCostUsd": 0,
+    "downstreamQualityScore": 0.88,
+    "stayedWithinAdjustedSpendCap": true,
+    "severity": "normal",
+    "responsibilityScopes": ["reviewer_material_review"],
+    "comparableFailureCount": 0,
+    "notes": "Human review caught the missing proof. The team supplied it before any full tranche release."
+  }
+}

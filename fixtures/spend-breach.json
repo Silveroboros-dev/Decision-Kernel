@@ -1,0 +1,98 @@
+{
+  "scenarioId": "spend-breach",
+  "label": "Spend breach",
+  "badgeTone": "critical",
+  "description": "The work looks verified, but agent spend exceeded the delegated cap. The kernel separates verification from cost governance.",
+  "firstPayer": "Sponsors funding agent-assisted work where API, model, and tool spend can run ahead of human judgment.",
+  "claim": {
+    "id": "mk_spend_001",
+    "project": "Protocol Foundation Grant 09",
+    "sponsorType": "protocol_foundation",
+    "milestoneId": "api_integration_v1",
+    "requestedTrancheUsd": 750,
+    "materialityUsd": 750,
+    "submittedBy": "builder_team_gamma",
+    "submittedAt": "2026-04-27T15:00:00.000Z",
+    "evidence": [
+      {
+        "id": "integration_summary",
+        "type": "artifact",
+        "required": true,
+        "present": true,
+        "description": "integration summary is present",
+        "provenanceRef": "artifact:integration-summary.md lines 1-35"
+      },
+      {
+        "id": "commit_range",
+        "type": "commit",
+        "required": true,
+        "present": true,
+        "description": "implementation commits are linked",
+        "provenanceRef": "git:4f83c21..91ab604"
+      },
+      {
+        "id": "test_log",
+        "type": "test_log",
+        "required": true,
+        "present": true,
+        "description": "integration tests pass",
+        "provenanceRef": "ci:api-integration-run-221"
+      },
+      {
+        "id": "deployment_url",
+        "type": "deployment_url",
+        "required": true,
+        "present": true,
+        "description": "staging endpoint is live",
+        "provenanceRef": "deploy:api-integration-staging"
+      },
+      {
+        "id": "spend_ledger",
+        "type": "spend_ledger",
+        "required": true,
+        "present": true,
+        "description": "agent spend ledger is attached",
+        "provenanceRef": "ledger:agent-spend-2026-04-27"
+      }
+    ],
+    "workflow": {
+      "completedItems": 12,
+      "totalItems": 12,
+      "blockingIssues": 0
+    },
+    "spend": {
+      "agentSpendUsd": 232.4,
+      "agentSpendCapUsd": 150,
+      "budgetRemainingUsd": 980
+    }
+  },
+  "trustState": {
+    "policyAutoClear": {
+      "mean": 0.8,
+      "evidenceStrength": 44,
+      "band": "normal"
+    },
+    "reviewerMaterialReview": {
+      "mean": 0.71,
+      "evidenceStrength": 35,
+      "band": "normal"
+    },
+    "agentBudgetDiscipline": {
+      "mean": 0.78,
+      "evidenceStrength": 18,
+      "band": "normal"
+    }
+  },
+  "outcome": {
+    "caseId": "mk_spend_001",
+    "accepted": true,
+    "reversed": false,
+    "remediationCostUsd": 0,
+    "downstreamQualityScore": 0.9,
+    "stayedWithinAdjustedSpendCap": false,
+    "severity": "moderate",
+    "responsibilityScopes": ["agent_budget_discipline"],
+    "comparableFailureCount": 3,
+    "notes": "The integration worked, but the agent did not stay inside the delegated spend boundary."
+  }
+}
